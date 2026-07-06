@@ -175,6 +175,29 @@
     color:var(--ink-soft);
     white-space:nowrap;
   }
+  .timer-box{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink);
+    background:#f5f5f7;
+    padding:6px 12px;
+    border-radius:100px;
+    white-space:nowrap;
+    font-variant-numeric:tabular-nums;
+  }
+  .timer-box.warn{
+    background:#fdeceb;
+    color:var(--red);
+  }
+  .timer-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--green);
+  }
+  .timer-box.warn .timer-dot{background:var(--red);animation:pulse 1s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
   /* ---------- QUESTIONS ---------- */
   .q-section{padding:36px 0 10px;}
@@ -356,6 +379,12 @@
     font-size:14px;
     color:var(--ink);
   }
+  .source-ref{
+    margin-top:8px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--blue);
+  }
 
   .filter-tabs{
     display:flex;
@@ -451,6 +480,7 @@
     <div class="progress-inner">
       <div class="progress-label" id="progressLabel">0 / 50 answered</div>
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="timer-box" id="timerBox"><span class="timer-dot"></span><span id="timerText">20:00</span></div>
     </div>
   </div>
 
@@ -505,9 +535,9 @@
     <div id="reviewContainer"></div>
 
     <div class="share-box">
-      <h3>Send this report to the owner</h3>
-      <p>Tap below to share the full result — score, answers, and reasoning — over WhatsApp.</p>
-      <button class="btn-primary whatsapp-btn" id="whatsappBtn">Send Report on WhatsApp</button>
+      <h3 id="shareTitle">Report sent to admin</h3>
+      <p id="shareSubtext">Your result has been sent to the admin on WhatsApp automatically. If the WhatsApp window didn't open, tap below.</p>
+      <button class="btn-primary whatsapp-btn" id="whatsappBtn">Submit Report to Admin</button>
     </div>
   </div>
 
@@ -518,64 +548,65 @@
 /* ============================================================
    CONFIG — fill in before deploying
    ============================================================ */
-const OWNER_WHATSAPP_NUMBER = "91XXXXXXXXXX"; // <-- replace with owner's WhatsApp number, country code + number, no + or spaces
+const OWNER_WHATSAPP_NUMBER = "918857090799"; // owner's WhatsApp number, country code + number, no + no spaces
 const PASS_THRESHOLD = 80; // marks out of 100 considered "Go-Live" pass
 const CONDITIONAL_THRESHOLD = 60; // marks out of 100 considered "Conditional"
+const EXAM_DURATION_SECONDS = 20 * 60; // 20 minute timer
 
 /* ============================================================
    QUESTION BANK — 50 questions, 2 marks each
    ============================================================ */
 const QUESTIONS = [
-{tag:"MMS", q:"MMS ka full form kya hai?", opts:["Maximum Marketing Strategy","Minimum Minute Strategy","Multiple Message System","Manual Monitoring Sheet"], correct:1, explain:"MMS = Minimum Minute Strategy (locked definition). Maqsad: relationship-first tone ke saath minimum time mein lead qualify karna, visit book karna, ya clear next-step set karna."},
-{tag:"MMS", q:"MMS call architecture ka target total duration kya hai?", opts:["1-2 minute","3-5 minute","8-10 minute","15 minute"], correct:1, explain:"MMS call architecture 5 steps mein 0-300 seconds (5 minute) tak design hai — Open, Qualify, Match+Spike, Visit-ask, Lock."},
-{tag:"MMS", q:"MMS architecture mein 'Qualify (BANT-lite)' step kis time window mein aata hai?", opts:["0-30 sec","30-120 sec","120-180 sec","180-240 sec"], correct:1, explain:"Qualify step 30-120 second window mein hota hai — budget, area, end-use vs investment, timeline poocha jaata hai."},
-{tag:"MMS", q:"'Visit-ask (pivot)' step ka time window kya hai?", opts:["30-120 sec","120-180 sec","180-240 sec","240-300 sec"], correct:2, explain:"Visit-ask step 180-240 second window mein aata hai — yahan assume-the-visit approach se weekend slot offer hota hai."},
-{tag:"MMS", q:"Customer bolta hai 'WhatsApp kar do bas' — MMS ka correct pivot kya hai?", opts:["Turant WhatsApp bhej kar call end kar do","Bolo ki photos se andaza nahi aata, 20 min mein khud dekh lo — Sat ya Sun offer karo","Discount de do taaki maan jaaye","Call disconnect kar do"], correct:1, explain:"MMS fast pivot: 'Bhej raha hoon Sir, par photos se andaza nahi aata. 20 min mein khud dekh lo — Sat ya Sun?' — visit ki taraf pivot karna hai, request chhodni nahi."},
-{tag:"MMS", q:"Cold lead ko kitne second mein respect se release karna sikhaya jaata hai?", opts:["30 sec","60 sec","2 min","5 min"], correct:1, explain:"Cold-release drill: cold lead ko 60 sec mein respect se release karo, taaki energy hot leads par lage."},
-{tag:"Calling", q:"Deployed baseline (Day 30 ke baad) calls/day target kya hai?", opts:["30 calls/day","40 calls/day","50 calls/day","65 calls/day"], correct:2, explain:"Deployed baseline: 50 calls/day, 10 site visits/week, minimum 4 self-closure bookings/month."},
-{tag:"Calling", q:"'Full load' phase (Day 10-24) mein daily call target kitna hai?", opts:["20-30 calls","40-45 calls","50-60 calls","65 calls"], correct:2, explain:"Full load stage (Days 10-24) ka target 50-60 calls/day hai — MMS calling, visits, follow-up discipline ke saath."},
-{tag:"Objection", q:"ACER framework ka 'C' kis cheez ko represent karta hai?", opts:["Close","Clarify","Convince","Confirm"], correct:1, explain:"ACER = Acknowledge, Clarify, Educate/reframe, Redirect to action. 'C' yahan Clarify hai — real concern dig karna."},
-{tag:"Objection", q:"ACER framework ka correct sequence kya hai?", opts:["Acknowledge → Clarify → Educate → Redirect","Ask → Convince → Explain → Repeat","Acknowledge → Close → Explain → Redirect","Clarify → Acknowledge → Redirect → Educate"], correct:0, explain:"Sahi sequence: Acknowledge (defensive mat bano) → Clarify (real concern dig karo) → Educate/reframe (facts+story se value badhao) → Redirect to action (visit/next step)."},
-{tag:"Objection", q:"Customer bolta hai 'Doosri jagah sasta hai' — ACER ke hisaab se best response?", opts:["'Sir humara hi best hai, trust karo'","Compare karte waqt carpet, location, builder trust dekhna zaroori hai — dono dekh lo bolna","Turant discount offer kar dena","Chup rehna aur reply na dena"], correct:1, explain:"Objection library ke hisaab se: 'Compare karte waqt carpet, location, builder trust dekhna zaroori hai — ek baar dono dekh lo.' Yeh educate+redirect dono karta hai."},
-{tag:"Objection", q:"Program ke hisaab se objection ko kya samjha jaata hai?", opts:["Rejection", "Interest ka signal", "Trainer ki galti", "Time waste"], correct:1, explain:"Customer psychology section: 'Jo customer objection nahi uthata wo aksar interested hi nahi hota.' Objection = convince karo, main lena chahta hoon."},
-{tag:"Objection", q:"'Objection Survivor' game mein winner kaise decide hota hai?", opts:["Sabse zyada bola jo", "Jitni der composed reh kar ACER se handle kare, utne points", "Jo sabse zor se bole", "Random selection"], correct:1, explain:"Objection Survivor: candidate hot-seat par, trainer+team objections firing karte hain. Jitni der composed reh kar ACER se handle kare utne points; sabse zyada = Survivor."},
-{tag:"Objection", q:"Objection handling ka intensive daily drill kis din se shuru hota hai?", opts:["Day 1","Day 3","Day 8","Day 19"], correct:2, explain:"Objection handling framework Day 8 se intensive drill hota hai; Day 19+ objection-to-close chains banti hain."},
-{tag:"Relationship", q:"Relationship Building Framework ka correct sequence kya hai?", opts:["Business → Familiar → Trusted → Influential","Familiar → Trusted → Influential → Business","Trusted → Familiar → Business → Influential","Familiar → Business → Trusted → Influential"], correct:1, explain:"Locked sequence: FAMILIAR → TRUSTED → INFLUENTIAL → BUSINESS. Pehle din hi pricing pe koodne wala desperate lagta hai."},
-{tag:"Relationship", q:"Rapport drill ke hisaab se ideal listening:speaking ratio kya hai?", opts:["50% sun, 50% bol","60% sun, 40% bol","40% sun, 60% bol","20% sun, 80% bol"], correct:1, explain:"Customer psychology: 'Aapka kaam 60% sunna, 40% bolna hai. Jo SEM zyada sunta hai, wo zyada bechta hai.'"},
-{tag:"Relationship", q:"'Memory drill' mein candidate kya practice karta hai?", opts:["Naya sales script yaad karta hai","Kal ke 3 customers ka 1-1 personal detail bina notes ke yaad karta hai","Cost sheet yaad karta hai","RERA number yaad karta hai"], correct:1, explain:"Daily relationship drill mein Memory drill: 'kal ke 3 customers ka 1-1 personal detail bina notes ke yaad karo.'"},
-{tag:"Relationship", q:"'Rapport Champion' daily contest mein kitne second mein personal detail nikaalna hota hai?", opts:["30 sec","60 sec","90 sec","120 sec"], correct:2, explain:"Rapport Champion: trainer tough/silent customer persona uthata hai, candidate ko 90 sec mein 1 personal detail nikaalna hai."},
-{tag:"Relationship", q:"'Influential' stage mein customer ka behavior kaisa describe kiya gaya hai?", opts:["Sirf pricing poochta hai","Candidate ki raay maayne rakhti hai, guide accept karta hai","Call disconnect karta hai","Sirf brochure maangta hai"], correct:1, explain:"Influential stage: 'Ab tumhari raay maayne rakhti hai — guide karo, push nahi.'"},
-{tag:"Relationship", q:"Sabse common mistake pehli call mein kya batayi gayi hai?", opts:["Rapport line bolna","Pehli call par hi pricing/discount thopna","Customer ko sunna","Slowly bolna"], correct:1, explain:"Common mistake: 'Pehli call par hi pricing/discount/offer thopna. Desperate lagna. Yeh trust kill karta hai.'"},
-{tag:"Tagging", q:"Tagging ke do types document mein kaunse diye gaye hain?", opts:["Hot aur Cold","CRM tagging aur Verbal tagging","Manual aur Auto","Positive aur Negative"], correct:1, explain:"Two kinds of tagging: CRM tagging (status/notes/source/budget) aur Verbal tagging/positioning (customer ko team ke saamne sahi frame karna)."},
-{tag:"Tagging", q:"Handover formula ka pehla step kya hai?", opts:["Elevate the senior","Bridge — close the loop","Reassure continuity","Tag the customer positively"], correct:1, explain:"Handover formula sequence: 1) Bridge (close the loop), 2) Elevate the senior, 3) Tag customer positively, 4) Reassure continuity."},
-{tag:"Tagging", q:"Achhe handover mein customer ko kaisa feel hona chahiye?", opts:["Pass-on kiya ja raha hai","Upgrade kiya ja raha hai — senior expert dekh raha hai","Ignore kiya ja raha hai","Confuse kiya ja raha hai"], correct:1, explain:"'Sahi handover mein customer ko lagta hai — mujhe upgrade kiya ja raha hai, ab senior expert dekh raha hai.' Yehi difference deal banata hai."},
-{tag:"Tagging", q:"Tagging & handover roleplay seeds mein kitne customer types diye gaye hain jinse 50+ combinations banti hain?", opts:["4 types","8 types","12 types","16 types"], correct:1, explain:"8 customer types × multiple moods × multiple situations = 50+ combinations, roz 5 roleplays."},
-{tag:"Tagging", q:"Handover ki common mistake kya batayi gayi hai?", opts:["Senior ko customer introduce na karna","Senior ke saamne customer ki info dobara poori se poori dohrana","Customer ko chai dena","CRM update karna"], correct:1, explain:"Common mistake: senior ke saamne info dobara poori dohrana — customer bore hota hai aur lagta hai 'isne note hi nahi kiya'. Crisp 2-line positioning karo."},
-{tag:"Sq.Ft", q:"RERA ke baad official measurement basis kya hai?", opts:["Built-up area","Saleable area","Carpet area","Super built-up area"], correct:2, explain:"Sq.Ft Mastery: 'RERA ke baad carpet area official basis hai.' Saleable se mislead karna illegal hai."},
-{tag:"Sq.Ft", q:"Saleable/Super built-up area mein carpet ke alawa kya included hota hai?", opts:["Sirf walls ke andar ka area","Built-up + common area share (lobby, lift, stairs)","Sirf balcony","Sirf car parking"], correct:1, explain:"Saleable/super built-up = Built-up + common-area share. Customer line: 'Isme lobby, lift, stairs ka aapka hissa bhi shamil hai.'"},
-{tag:"Sq.Ft", q:"'Saleable bolke carpet chhupana' kya maana jaata hai?", opts:["Normal sales practice","Fraud + instant trust-kill","Marketing strategy","RERA approved practice"], correct:1, explain:"Common mistake section: 'Saleable bol kar carpet chhupana = fraud + instant trust-kill. RERA ke baad carpet official hai.'"},
-{tag:"Sq.Ft", q:"Room-to-feet drill: 10x12 ka bedroom kitne sq.ft ka hota hai?", opts:["100 sq.ft","120 sq.ft","144 sq.ft","160 sq.ft"], correct:1, explain:"10 x 12 = 120 sq.ft. Candidate ko instant 120 sq.ft bolna hai + 'bed+wardrobe aa jayega' jaisa context."},
-{tag:"Sq.Ft", q:"Built-up area mein carpet ke alawa specifically kya add hota hai?", opts:["Sirf lobby","Walls aur balcony ki thickness","Clubhouse area","Parking area"], correct:1, explain:"Built-up = Carpet + walls + balcony. 'Isme deewaron aur balcony ki thickness bhi count hoti hai.'"},
-{tag:"Construction", q:"Mivan technology ka main customer-facing benefit kya hai?", opts:["Zyada mehnga hai isliye premium lagta hai","Seamless walls, faster + stronger, kam cracks","Sirf speed badhti hai, quality same rehti hai","Sirf ek color mein available hota hai"], correct:1, explain:"Mivan: 'Aluminium formwork se cast — seamless walls, faster + stronger + uniform quality, kam cracks.'"},
-{tag:"Construction", q:"RCC ka full form aur meaning kya hai?", opts:["Raw Concrete Construction","Reinforced Cement Concrete — steel + concrete frame","Regular Construction Code","Reinforced Ceiling Concept"], correct:1, explain:"RCC = Reinforced Cement Concrete. Steel + concrete frame se building strong + earthquake-resistant banti hai."},
-{tag:"Construction", q:"Spec-selling drill mein 'Mivan' ko customer-benefit line mein kaise convert karte hain?", opts:["'Mivan matlab expensive material hai'","'Mivan = seamless walls = kam crack = kam maintenance'","'Mivan sirf builder ke liye fayda deta hai'","'Mivan ka koi customer benefit nahi'"], correct:1, explain:"Spec-selling drill: trainer spec bolta hai, candidate use customer-benefit line mein convert karta hai — 'Mivan = seamless walls = kam crack = kam maintenance.'"},
-{tag:"Construction", q:"Site par customer ko 'feel' karwane ka field secret kya hai?", opts:["Sirf bolke explain karna","Tile uthwa kar, fitting dikha kar touch+see karwana","Sirf brochure padhwana","Sirf video dikhana"], correct:1, explain:"Field secret: 'Customer ko sample-flat mein ek tile uthwa kar, ek fitting dikha kar feel karwao. Touch + see = price justified.'"},
-{tag:"Construction", q:"Double-glazed/UPVC windows ka customer-facing benefit kya hai?", opts:["Sirf dikhne mein achha lagta hai","Noise + heat insulation, premium feel deta hai","Sasta padta hai","Koi specific benefit nahi hai"], correct:1, explain:"Glass/windows concept: 'Double-glazed / UPVC — noise + heat insulation, premium feel.'"},
-{tag:"Negotiation", q:"Negotiation Mastery ka core principle kya hai?", opts:["Price pehle discuss karo","Value Before Price","Discount pehle offer karo","Sirf features batao, price avoid karo"], correct:1, explain:"Core framework: 'Negotiation aasan ho jaati hai jab value samajh aa jaati hai. Price ki ladai mein mat utro — value ki kahani sunao.'"},
-{tag:"Negotiation", q:"Negotiation sequence mein 'Defer price' ka matlab kya hai?", opts:["Turant rate bata dena","Pehli baar mein rate par na uljhna, pehle value dikhne do","Price double bata dena","Customer ko rate poochne se hi rokna"], correct:1, explain:"Step 1 of negotiation sequence: 'Defer price: pehli baar mein rate par mat uljho — Sir pehle dekh lo, value samajh aaye, phir best number nikaalte hain.'"},
-{tag:"Negotiation", q:"Framework ke hisaab se customer discount kyun maangta hai?", opts:["Kyunki wo bargain karna pasand karta hai","Kyunki use abhi tak value clearly nahi dikhi","Kyunki broker weak hota hai","Kyunki market down hai"], correct:1, explain:"Customer psychology: 'Customer discount isliye maangta hai kyunki use abhi tak value clearly nahi dikhi.'"},
-{tag:"Negotiation", q:"Negotiation mein sabse badi common mistake kya batayi gayi hai?", opts:["Value build karna","Customer ke pehle hi discount offer kar dena","Cost sheet explain karna","Spec selling karna"], correct:1, explain:"Common mistake: 'Customer ke pehle hi discount offer kar dena — isse value gir jaati hai aur customer aur maangta hai.'"},
-{tag:"Negotiation", q:"'Hold with dignity' ka matlab negotiation mein kya hai?", opts:["Customer se argue karna","'Yeh best possible hai, main jhooth nahi bolunga' jaisa firm-but-respectful stance","Deal cancel kar dena","Customer se baat karna band kar dena"], correct:1, explain:"Negotiation sequence ka last step: 'Hold with dignity — Sir is project mein yeh best possible hai, main aapko jhooth nahi bolunga.'"},
-{tag:"Closing", q:"Closing system mein Level 1 close kaunsa hai?", opts:["Assumptive close","Visit close","Urgency close","Soft close"], correct:1, explain:"Closing levels: 1) Visit close (har call ka primary close), 2) Trial close, 3) Soft close, 4) Assumptive close, 5) Urgency close."},
-{tag:"Closing", q:"Document ke hisaab se sabse badi closing galti kya hai?", opts:["Zyada bolna","Close maangna hi nahi","Jaldi close kar dena","Silent rehna"], correct:1, explain:"'Sabse badi closing galti: close maangna hi nahi. 80% freshers visit/booking ask hi nahi karte.'"},
-{tag:"Closing", q:"'Ask karo, phir CHUP raho' principle kis stage se related hai?", opts:["Rapport building","Closing","Grooming","CRM"], correct:1, explain:"Closing principles: 'Silence ke saath comfortable raho — ask ke baad chup, customer ko bolne do.'"},
-{tag:"Closing", q:"Urgency close kab use karna chahiye?", opts:["Hamesha, har customer par","Sirf jab genuine ho, fake nahi","Sirf Tier 1 (warm) customer par","Kabhi nahi use karna chahiye"], correct:1, explain:"Closing principle: 'Urgency sirf genuine — fake urgency trust kills + RERA risk.'"},
-{tag:"RERA", q:"PropBillion ka locked agent RERA registration number kya hai?", opts:["A52100058176","A52100058177","MH-RERA-2024","Har project ke hisaab se alag hota hai"], correct:0, explain:"RERA Mastery Module mein locked: 'PropBillion ka RERA agent registration number A52100058176 hai — yahi genuine aur current number hai.'"},
-{tag:"RERA", q:"Customer poochta hai 'Carpet ya saleable?' — iska honest answer kya hai?", opts:["Sirf saleable batao, simple lagta hai","RERA ke baad official carpet hota hai, carpet hi batao","Dono avoid kar do, topic badal do","Guess kar lo approx number"], correct:1, explain:"RERA FAQ: 'Sir RERA ke baad official carpet hota hai — main aapko carpet hi bataunga, transparency rahegi.'"},
-{tag:"RERA", q:"Kaunsa claim RERA-risky mana gaya hai?", opts:["'RERA registered hai, aap khud verify kar sakte ho'","'Assured/guaranteed return' jaisa claim","Carpet area clearly batana","Registered possession date batana"], correct:1, explain:"RERA basics: 'No false promises — assured/guaranteed return type claims RERA-risky hain, avoid karo.'"},
-{tag:"Voice/WhatsApp", q:"Voice warmup kitne minute ka hota hai aur kab mandatory hai?", opts:["5 min, calling ke baad","15 min, calling se pehle har din","30 min, hafte mein ek baar","Optional hai, jab time mile"], correct:1, explain:"Daily voice warmup system 15 minute ka hai, aur calling se pehle mandatory — 'jaise athlete bina warmup ke nahi khelta.'"},
-{tag:"Voice/WhatsApp", q:"WhatsApp 'Last-message science' principle kya kehta hai?", opts:["Aakhri message dry 'ok' hona chahiye","Aakhri message aapka ho, par value ke saath (question/CTA)","Kabhi last message mat bhejo","Sirf files forward karo, text mat likho"], correct:1, explain:"Core principle: 'Last-message science — aakhri message aapka ho, par value ke saath (question/CTA), dry ok nahi.'"},
-{tag:"Deployment", q:"Gate rule ke hisaab se, agar compliance violation (false promise/RERA misstatement) ho jaye to kya hota hai?", opts:["Skill score se average nikal lete hain","Automatic fail hota hai, skill scores kitne bhi ho", "Sirf ek warning milta hai", "Owner baad mein manually decide karega"], correct:1, explain:"Deployment Readiness rule: 'Compliance violation (false promise / RERA misstatement) ya culture breach = automatic fail regardless of skill scores.'"}
+{tag:"MMS", q:"MMS ka full form kya hai?", opts:["Maximum Marketing Strategy","Minimum Minute Strategy","Multiple Message System","Manual Monitoring Sheet"], correct:1, explain:"MMS = Minimum Minute Strategy (locked definition). Maqsad: relationship-first tone ke saath minimum time mein lead qualify karna, visit book karna, ya clear next-step set karna.", page:19},
+{tag:"MMS", q:"MMS call architecture ka target total duration kya hai?", opts:["1-2 minute","3-5 minute","8-10 minute","15 minute"], correct:1, explain:"MMS call architecture 5 steps mein 0-300 seconds (5 minute) tak design hai — Open, Qualify, Match+Spike, Visit-ask, Lock.", page:19},
+{tag:"MMS", q:"MMS architecture mein 'Qualify (BANT-lite)' step kis time window mein aata hai?", opts:["0-30 sec","30-120 sec","120-180 sec","180-240 sec"], correct:1, explain:"Qualify step 30-120 second window mein hota hai — budget, area, end-use vs investment, timeline poocha jaata hai.", page:19},
+{tag:"MMS", q:"'Visit-ask (pivot)' step ka time window kya hai?", opts:["30-120 sec","120-180 sec","180-240 sec","240-300 sec"], correct:2, explain:"Visit-ask step 180-240 second window mein aata hai — yahan assume-the-visit approach se weekend slot offer hota hai.", page:19},
+{tag:"MMS", q:"Customer bolta hai 'WhatsApp kar do bas' — MMS ka correct pivot kya hai?", opts:["Turant WhatsApp bhej kar call end kar do","Bolo ki photos se andaza nahi aata, 20 min mein khud dekh lo — Sat ya Sun offer karo","Discount de do taaki maan jaaye","Call disconnect kar do"], correct:1, explain:"MMS fast pivot: 'Bhej raha hoon Sir, par photos se andaza nahi aata. 20 min mein khud dekh lo — Sat ya Sun?' — visit ki taraf pivot karna hai, request chhodni nahi.", page:19},
+{tag:"MMS", q:"Cold lead ko kitne second mein respect se release karna sikhaya jaata hai?", opts:["30 sec","60 sec","2 min","5 min"], correct:1, explain:"Cold-release drill: cold lead ko 60 sec mein respect se release karo, taaki energy hot leads par lage.", page:20},
+{tag:"Calling", q:"Deployed baseline (Day 30 ke baad) calls/day target kya hai?", opts:["30 calls/day","40 calls/day","50 calls/day","65 calls/day"], correct:2, explain:"Deployed baseline: 50 calls/day, 10 site visits/week, minimum 4 self-closure bookings/month.", page:18},
+{tag:"Calling", q:"'Full load' phase (Day 10-24) mein daily call target kitna hai?", opts:["20-30 calls","40-45 calls","50-60 calls","65 calls"], correct:2, explain:"Full load stage (Days 10-24) ka target 50-60 calls/day hai — MMS calling, visits, follow-up discipline ke saath.", page:18},
+{tag:"Objection", q:"ACER framework ka 'C' kis cheez ko represent karta hai?", opts:["Close","Clarify","Convince","Confirm"], correct:1, explain:"ACER = Acknowledge, Clarify, Educate/reframe, Redirect to action. 'C' yahan Clarify hai — real concern dig karna.", page:31},
+{tag:"Objection", q:"ACER framework ka correct sequence kya hai?", opts:["Acknowledge → Clarify → Educate → Redirect","Ask → Convince → Explain → Repeat","Acknowledge → Close → Explain → Redirect","Clarify → Acknowledge → Redirect → Educate"], correct:0, explain:"Sahi sequence: Acknowledge (defensive mat bano) → Clarify (real concern dig karo) → Educate/reframe (facts+story se value badhao) → Redirect to action (visit/next step).", page:31},
+{tag:"Objection", q:"Customer bolta hai 'Doosri jagah sasta hai' — ACER ke hisaab se best response?", opts:["'Sir humara hi best hai, trust karo'","Compare karte waqt carpet, location, builder trust dekhna zaroori hai — dono dekh lo bolna","Turant discount offer kar dena","Chup rehna aur reply na dena"], correct:1, explain:"Objection library ke hisaab se: 'Compare karte waqt carpet, location, builder trust dekhna zaroori hai — ek baar dono dekh lo.' Yeh educate+redirect dono karta hai.", page:31},
+{tag:"Objection", q:"Program ke hisaab se objection ko kya samjha jaata hai?", opts:["Rejection", "Interest ka signal", "Trainer ki galti", "Time waste"], correct:1, explain:"Customer psychology section: 'Jo customer objection nahi uthata wo aksar interested hi nahi hota.' Objection = convince karo, main lena chahta hoon.", page:31},
+{tag:"Objection", q:"'Objection Survivor' game mein winner kaise decide hota hai?", opts:["Sabse zyada bola jo", "Jitni der composed reh kar ACER se handle kare, utne points", "Jo sabse zor se bole", "Random selection"], correct:1, explain:"Objection Survivor: candidate hot-seat par, trainer+team objections firing karte hain. Jitni der composed reh kar ACER se handle kare utne points; sabse zyada = Survivor.", page:31},
+{tag:"Objection", q:"Objection handling ka intensive daily drill kis din se shuru hota hai?", opts:["Day 1","Day 3","Day 8","Day 19"], correct:2, explain:"Objection handling framework Day 8 se intensive drill hota hai; Day 19+ objection-to-close chains banti hain.", page:31},
+{tag:"Relationship", q:"Relationship Building Framework ka correct sequence kya hai?", opts:["Business → Familiar → Trusted → Influential","Familiar → Trusted → Influential → Business","Trusted → Familiar → Business → Influential","Familiar → Business → Trusted → Influential"], correct:1, explain:"Locked sequence: FAMILIAR → TRUSTED → INFLUENTIAL → BUSINESS. Pehle din hi pricing pe koodne wala desperate lagta hai.", page:13},
+{tag:"Relationship", q:"Rapport drill ke hisaab se ideal listening:speaking ratio kya hai?", opts:["50% sun, 50% bol","60% sun, 40% bol","40% sun, 60% bol","20% sun, 80% bol"], correct:1, explain:"Customer psychology: 'Aapka kaam 60% sunna, 40% bolna hai. Jo SEM zyada sunta hai, wo zyada bechta hai.'", page:13},
+{tag:"Relationship", q:"'Memory drill' mein candidate kya practice karta hai?", opts:["Naya sales script yaad karta hai","Kal ke 3 customers ka 1-1 personal detail bina notes ke yaad karta hai","Cost sheet yaad karta hai","RERA number yaad karta hai"], correct:1, explain:"Daily relationship drill mein Memory drill: 'kal ke 3 customers ka 1-1 personal detail bina notes ke yaad karo.'", page:13},
+{tag:"Relationship", q:"'Rapport Champion' daily contest mein kitne second mein personal detail nikaalna hota hai?", opts:["30 sec","60 sec","90 sec","120 sec"], correct:2, explain:"Rapport Champion: trainer tough/silent customer persona uthata hai, candidate ko 90 sec mein 1 personal detail nikaalna hai.", page:14},
+{tag:"Relationship", q:"'Influential' stage mein customer ka behavior kaisa describe kiya gaya hai?", opts:["Sirf pricing poochta hai","Candidate ki raay maayne rakhti hai, guide accept karta hai","Call disconnect karta hai","Sirf brochure maangta hai"], correct:1, explain:"Influential stage: 'Ab tumhari raay maayne rakhti hai — guide karo, push nahi.'", page:13},
+{tag:"Relationship", q:"Sabse common mistake pehli call mein kya batayi gayi hai?", opts:["Rapport line bolna","Pehli call par hi pricing/discount thopna","Customer ko sunna","Slowly bolna"], correct:1, explain:"Common mistake: 'Pehli call par hi pricing/discount/offer thopna. Desperate lagna. Yeh trust kill karta hai.'", page:13},
+{tag:"Tagging", q:"Tagging ke do types document mein kaunse diye gaye hain?", opts:["Hot aur Cold","CRM tagging aur Verbal tagging","Manual aur Auto","Positive aur Negative"], correct:1, explain:"Two kinds of tagging: CRM tagging (status/notes/source/budget) aur Verbal tagging/positioning (customer ko team ke saamne sahi frame karna).", page:22},
+{tag:"Tagging", q:"Handover formula ka pehla step kya hai?", opts:["Elevate the senior","Bridge — close the loop","Reassure continuity","Tag the customer positively"], correct:1, explain:"Handover formula sequence: 1) Bridge (close the loop), 2) Elevate the senior, 3) Tag customer positively, 4) Reassure continuity.", page:22},
+{tag:"Tagging", q:"Achhe handover mein customer ko kaisa feel hona chahiye?", opts:["Pass-on kiya ja raha hai","Upgrade kiya ja raha hai — senior expert dekh raha hai","Ignore kiya ja raha hai","Confuse kiya ja raha hai"], correct:1, explain:"'Sahi handover mein customer ko lagta hai — mujhe upgrade kiya ja raha hai, ab senior expert dekh raha hai.' Yehi difference deal banata hai.", page:22},
+{tag:"Tagging", q:"Tagging & handover roleplay seeds mein kitne customer types diye gaye hain jinse 50+ combinations banti hain?", opts:["4 types","8 types","12 types","16 types"], correct:1, explain:"8 customer types × multiple moods × multiple situations = 50+ combinations, roz 5 roleplays.", page:22},
+{tag:"Tagging", q:"Handover ki common mistake kya batayi gayi hai?", opts:["Senior ko customer introduce na karna","Senior ke saamne customer ki info dobara poori se poori dohrana","Customer ko chai dena","CRM update karna"], correct:1, explain:"Common mistake: senior ke saamne info dobara poori dohrana — customer bore hota hai aur lagta hai 'isne note hi nahi kiya'. Crisp 2-line positioning karo.", page:23},
+{tag:"Sq.Ft", q:"RERA ke baad official measurement basis kya hai?", opts:["Built-up area","Saleable area","Carpet area","Super built-up area"], correct:2, explain:"Sq.Ft Mastery: 'RERA ke baad carpet area official basis hai.' Saleable se mislead karna illegal hai.", page:28},
+{tag:"Sq.Ft", q:"Saleable/Super built-up area mein carpet ke alawa kya included hota hai?", opts:["Sirf walls ke andar ka area","Built-up + common area share (lobby, lift, stairs)","Sirf balcony","Sirf car parking"], correct:1, explain:"Saleable/super built-up = Built-up + common-area share. Customer line: 'Isme lobby, lift, stairs ka aapka hissa bhi shamil hai.'", page:28},
+{tag:"Sq.Ft", q:"'Saleable bolke carpet chhupana' kya maana jaata hai?", opts:["Normal sales practice","Fraud + instant trust-kill","Marketing strategy","RERA approved practice"], correct:1, explain:"Common mistake section: 'Saleable bol kar carpet chhupana = fraud + instant trust-kill. RERA ke baad carpet official hai.'", page:28},
+{tag:"Sq.Ft", q:"Room-to-feet drill: 10x12 ka bedroom kitne sq.ft ka hota hai?", opts:["100 sq.ft","120 sq.ft","144 sq.ft","160 sq.ft"], correct:1, explain:"10 x 12 = 120 sq.ft. Candidate ko instant 120 sq.ft bolna hai + 'bed+wardrobe aa jayega' jaisa context.", page:28},
+{tag:"Sq.Ft", q:"Built-up area mein carpet ke alawa specifically kya add hota hai?", opts:["Sirf lobby","Walls aur balcony ki thickness","Clubhouse area","Parking area"], correct:1, explain:"Built-up = Carpet + walls + balcony. 'Isme deewaron aur balcony ki thickness bhi count hoti hai.'", page:28},
+{tag:"Construction", q:"Mivan technology ka main customer-facing benefit kya hai?", opts:["Zyada mehnga hai isliye premium lagta hai","Seamless walls, faster + stronger, kam cracks","Sirf speed badhti hai, quality same rehti hai","Sirf ek color mein available hota hai"], correct:1, explain:"Mivan: 'Aluminium formwork se cast — seamless walls, faster + stronger + uniform quality, kam cracks.'", page:29},
+{tag:"Construction", q:"RCC ka full form aur meaning kya hai?", opts:["Raw Concrete Construction","Reinforced Cement Concrete — steel + concrete frame","Regular Construction Code","Reinforced Ceiling Concept"], correct:1, explain:"RCC = Reinforced Cement Concrete. Steel + concrete frame se building strong + earthquake-resistant banti hai.", page:29},
+{tag:"Construction", q:"Spec-selling drill mein 'Mivan' ko customer-benefit line mein kaise convert karte hain?", opts:["'Mivan matlab expensive material hai'","'Mivan = seamless walls = kam crack = kam maintenance'","'Mivan sirf builder ke liye fayda deta hai'","'Mivan ka koi customer benefit nahi'"], correct:1, explain:"Spec-selling drill: trainer spec bolta hai, candidate use customer-benefit line mein convert karta hai — 'Mivan = seamless walls = kam crack = kam maintenance.'", page:29},
+{tag:"Construction", q:"Site par customer ko 'feel' karwane ka field secret kya hai?", opts:["Sirf bolke explain karna","Tile uthwa kar, fitting dikha kar touch+see karwana","Sirf brochure padhwana","Sirf video dikhana"], correct:1, explain:"Field secret: 'Customer ko sample-flat mein ek tile uthwa kar, ek fitting dikha kar feel karwao. Touch + see = price justified.'", page:29},
+{tag:"Construction", q:"Double-glazed/UPVC windows ka customer-facing benefit kya hai?", opts:["Sirf dikhne mein achha lagta hai","Noise + heat insulation, premium feel deta hai","Sasta padta hai","Koi specific benefit nahi hai"], correct:1, explain:"Glass/windows concept: 'Double-glazed / UPVC — noise + heat insulation, premium feel.'", page:29},
+{tag:"Negotiation", q:"Negotiation Mastery ka core principle kya hai?", opts:["Price pehle discuss karo","Value Before Price","Discount pehle offer karo","Sirf features batao, price avoid karo"], correct:1, explain:"Core framework: 'Negotiation aasan ho jaati hai jab value samajh aa jaati hai. Price ki ladai mein mat utro — value ki kahani sunao.'", page:30},
+{tag:"Negotiation", q:"Negotiation sequence mein 'Defer price' ka matlab kya hai?", opts:["Turant rate bata dena","Pehli baar mein rate par na uljhna, pehle value dikhne do","Price double bata dena","Customer ko rate poochne se hi rokna"], correct:1, explain:"Step 1 of negotiation sequence: 'Defer price: pehli baar mein rate par mat uljho — Sir pehle dekh lo, value samajh aaye, phir best number nikaalte hain.'", page:30},
+{tag:"Negotiation", q:"Framework ke hisaab se customer discount kyun maangta hai?", opts:["Kyunki wo bargain karna pasand karta hai","Kyunki use abhi tak value clearly nahi dikhi","Kyunki broker weak hota hai","Kyunki market down hai"], correct:1, explain:"Customer psychology: 'Customer discount isliye maangta hai kyunki use abhi tak value clearly nahi dikhi.'", page:30},
+{tag:"Negotiation", q:"Negotiation mein sabse badi common mistake kya batayi gayi hai?", opts:["Value build karna","Customer ke pehle hi discount offer kar dena","Cost sheet explain karna","Spec selling karna"], correct:1, explain:"Common mistake: 'Customer ke pehle hi discount offer kar dena — isse value gir jaati hai aur customer aur maangta hai.'", page:30},
+{tag:"Negotiation", q:"'Hold with dignity' ka matlab negotiation mein kya hai?", opts:["Customer se argue karna","'Yeh best possible hai, main jhooth nahi bolunga' jaisa firm-but-respectful stance","Deal cancel kar dena","Customer se baat karna band kar dena"], correct:1, explain:"Negotiation sequence ka last step: 'Hold with dignity — Sir is project mein yeh best possible hai, main aapko jhooth nahi bolunga.'", page:30},
+{tag:"Closing", q:"Closing system mein Level 1 close kaunsa hai?", opts:["Assumptive close","Visit close","Urgency close","Soft close"], correct:1, explain:"Closing levels: 1) Visit close (har call ka primary close), 2) Trial close, 3) Soft close, 4) Assumptive close, 5) Urgency close.", page:32},
+{tag:"Closing", q:"Document ke hisaab se sabse badi closing galti kya hai?", opts:["Zyada bolna","Close maangna hi nahi","Jaldi close kar dena","Silent rehna"], correct:1, explain:"'Sabse badi closing galti: close maangna hi nahi. 80% freshers visit/booking ask hi nahi karte.'", page:32},
+{tag:"Closing", q:"'Ask karo, phir CHUP raho' principle kis stage se related hai?", opts:["Rapport building","Closing","Grooming","CRM"], correct:1, explain:"Closing principles: 'Silence ke saath comfortable raho — ask ke baad chup, customer ko bolne do.'", page:32},
+{tag:"Closing", q:"Urgency close kab use karna chahiye?", opts:["Hamesha, har customer par","Sirf jab genuine ho, fake nahi","Sirf Tier 1 (warm) customer par","Kabhi nahi use karna chahiye"], correct:1, explain:"Closing principle: 'Urgency sirf genuine — fake urgency trust kills + RERA risk.'", page:32},
+{tag:"RERA", q:"PropBillion ka locked agent RERA registration number kya hai?", opts:["A52100058176","A52100058177","MH-RERA-2024","Har project ke hisaab se alag hota hai"], correct:0, explain:"RERA Mastery Module mein locked: 'PropBillion ka RERA agent registration number A52100058176 hai — yahi genuine aur current number hai.'", page:37},
+{tag:"RERA", q:"Customer poochta hai 'Carpet ya saleable?' — iska honest answer kya hai?", opts:["Sirf saleable batao, simple lagta hai","RERA ke baad official carpet hota hai, carpet hi batao","Dono avoid kar do, topic badal do","Guess kar lo approx number"], correct:1, explain:"RERA FAQ: 'Sir RERA ke baad official carpet hota hai — main aapko carpet hi bataunga, transparency rahegi.'", page:37},
+{tag:"RERA", q:"Kaunsa claim RERA-risky mana gaya hai?", opts:["'RERA registered hai, aap khud verify kar sakte ho'","'Assured/guaranteed return' jaisa claim","Carpet area clearly batana","Registered possession date batana"], correct:1, explain:"RERA basics: 'No false promises — assured/guaranteed return type claims RERA-risky hain, avoid karo.'", page:37},
+{tag:"Voice/WhatsApp", q:"Voice warmup kitne minute ka hota hai aur kab mandatory hai?", opts:["5 min, calling ke baad","15 min, calling se pehle har din","30 min, hafte mein ek baar","Optional hai, jab time mile"], correct:1, explain:"Daily voice warmup system 15 minute ka hai, aur calling se pehle mandatory — 'jaise athlete bina warmup ke nahi khelta.'", page:15},
+{tag:"Voice/WhatsApp", q:"WhatsApp 'Last-message science' principle kya kehta hai?", opts:["Aakhri message dry 'ok' hona chahiye","Aakhri message aapka ho, par value ke saath (question/CTA)","Kabhi last message mat bhejo","Sirf files forward karo, text mat likho"], correct:1, explain:"Core principle: 'Last-message science — aakhri message aapka ho, par value ke saath (question/CTA), dry ok nahi.'", page:24},
+{tag:"Deployment", q:"Gate rule ke hisaab se, agar compliance violation (false promise/RERA misstatement) ho jaye to kya hota hai?", opts:["Skill score se average nikal lete hain","Automatic fail hota hai, skill scores kitne bhi ho", "Sirf ek warning milta hai", "Owner baad mein manually decide karega"], correct:1, explain:"Deployment Readiness rule: 'Compliance violation (false promise / RERA misstatement) ya culture breach = automatic fail regardless of skill scores.'", page:48}
 ];
 
 /* ============================================================
@@ -584,6 +615,9 @@ const QUESTIONS = [
 let candidateName = "";
 let candidateDay = "";
 let answers = new Array(QUESTIONS.length).fill(null);
+let timeRemaining = EXAM_DURATION_SECONDS;
+let timerInterval = null;
+let hasSubmitted = false;
 
 /* ============================================================
    RENDER QUESTIONS
@@ -644,6 +678,41 @@ function updateProgress(){
 }
 
 /* ============================================================
+   TIMER — 20 minute countdown, auto-submits at zero
+   ============================================================ */
+function formatTime(sec){
+  const m = Math.floor(sec/60).toString().padStart(2,'0');
+  const s = (sec%60).toString().padStart(2,'0');
+  return `${m}:${s}`;
+}
+
+function startTimer(){
+  timeRemaining = EXAM_DURATION_SECONDS;
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timeRemaining--;
+    updateTimerDisplay();
+    if(timeRemaining <= 0){
+      clearInterval(timerInterval);
+      if(!hasSubmitted){
+        submitExam(true);
+      }
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay(){
+  const box = document.getElementById('timerBox');
+  const text = document.getElementById('timerText');
+  text.textContent = formatTime(Math.max(timeRemaining,0));
+  if(timeRemaining <= 120){
+    box.classList.add('warn');
+  } else {
+    box.classList.remove('warn');
+  }
+}
+
+/* ============================================================
    SCORING
    ============================================================ */
 function computeResult(){
@@ -659,7 +728,8 @@ function computeResult(){
       chosen: chosen,
       correct: item.correct,
       isCorrect: isCorrect,
-      explain: item.explain
+      explain: item.explain,
+      page: item.page
     };
   });
   const marks = correctCount * 2;
@@ -736,6 +806,7 @@ function renderReviewList(detail, filter){
       ${!item.isCorrect ? `<div class="review-line your-wrong"><b>Your answer:</b> ${chosenText}</div>` : ''}
       <div class="review-line correct-ans"><b>Correct answer:</b> ${correctText}</div>
       <div class="explain">${item.explain}</div>
+      <div class="source-ref">📘 Module reference — Page ${item.page}</div>
     `;
     container.appendChild(card);
   });
@@ -761,7 +832,7 @@ function decodeResultFromURL(encoded){
   const detail = QUESTIONS.map((item, qi) => {
     const chosen = payload.ans[qi];
     const isCorrect = chosen === item.correct;
-    return {q:item.q, tag:item.tag, opts:item.opts, chosen, correct:item.correct, isCorrect, explain:item.explain};
+    return {q:item.q, tag:item.tag, opts:item.opts, chosen, correct:item.correct, isCorrect, explain:item.explain, page:item.page};
   });
   return {
     name: payload.n, day: payload.d, timestamp: payload.t,
@@ -812,9 +883,16 @@ document.getElementById('startBtn').addEventListener('click', () => {
   document.getElementById('startScreen').classList.add('hidden');
   document.getElementById('examScreen').classList.remove('hidden');
   window.scrollTo(0,0);
+  startTimer();
 });
 
-document.getElementById('submitBtn').addEventListener('click', () => {
+document.getElementById('submitBtn').addEventListener('click', () => submitExam(false));
+
+function submitExam(isAutoSubmit){
+  if(hasSubmitted) return;
+  hasSubmitted = true;
+  if(timerInterval) clearInterval(timerInterval);
+
   const result = computeResult();
   const timestamp = new Date().toLocaleString('en-IN', {day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit'});
 
@@ -823,16 +901,31 @@ document.getElementById('submitBtn').addEventListener('click', () => {
   renderResults(result, candidateName, candidateDay, timestamp);
   window.scrollTo(0,0);
 
+  if(isAutoSubmit){
+    document.getElementById('resultName').insertAdjacentHTML('afterend', '<p style="text-align:center;color:#c7372f;font-weight:600;font-size:14px;margin:-6px 0 8px;">Time up — exam auto-submitted</p>');
+  }
+
   const encoded = encodeResultForURL(candidateName, candidateDay, timestamp, result);
   const baseURL = window.location.origin + window.location.pathname;
   const reviewLink = `${baseURL}?review=${encoded}`;
+  const msg = buildWhatsAppMessage(candidateName, candidateDay, timestamp, result, reviewLink);
+  const waURL = `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+  // Auto-open WhatsApp with the report pre-filled — one tap of Send in WhatsApp
+  // completes delivery to admin (browsers don't allow fully silent sending).
+  try{
+    window.open(waURL, '_blank');
+    document.getElementById('shareTitle').textContent = "Report sent to admin";
+    document.getElementById('shareSubtext').textContent = "WhatsApp opened with your result pre-filled for the admin. If it didn't open (pop-up blocked), tap below.";
+  }catch(e){
+    document.getElementById('shareTitle').textContent = "Submit your report to admin";
+    document.getElementById('shareSubtext').textContent = "Tap below to open WhatsApp with your result pre-filled for the admin.";
+  }
 
   document.getElementById('whatsappBtn').addEventListener('click', () => {
-    const msg = buildWhatsAppMessage(candidateName, candidateDay, timestamp, result, reviewLink);
-    const waURL = `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
     window.open(waURL, '_blank');
   });
-});
+}
 
 /* ============================================================
    ON LOAD — check for review link (owner opening shared result)
