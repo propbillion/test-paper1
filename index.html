@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>SEM Academy — Advanced Reasoning (Pages 1-18)</title>
+<title>SEM Academy — MMS & Systems Exam (Pages 19-27)</title>
 <style>
   :root{
     --bg:#fbfbfd;
@@ -26,7 +26,7 @@
     -webkit-font-smoothing:antialiased;
     line-height:1.47059;
   }
-  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px;}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -148,7 +148,7 @@
     padding:14px 0;
   }
   .progress-inner{
-    max-width:880px;
+    max-width:820px;
     margin:0 auto;
     padding:0 22px;
     display:flex;
@@ -231,23 +231,22 @@
     letter-spacing:.04em;
   }
   .q-text{
-    font-size:18.5px;
+    font-size:17px;
     font-weight:600;
-    margin:0 0 20px;
-    line-height:1.55;
+    margin:0 0 16px;
+    line-height:1.4;
   }
-  .options{display:flex;flex-direction:column;gap:12px;}
+  .options{display:flex;flex-direction:column;gap:10px;}
   .option{
     display:flex;
     align-items:flex-start;
     gap:12px;
-    padding:16px 18px;
+    padding:13px 16px;
     border:1.5px solid var(--line);
-    border-radius:14px;
+    border-radius:12px;
     cursor:pointer;
     transition:border-color .12s ease, background .12s ease;
-    font-size:16px;
-    line-height:1.55;
+    font-size:15.5px;
   }
   .option:hover{background:#f5f5f7;}
   .option.selected{
@@ -275,7 +274,7 @@
     margin-top:20px;
   }
   .submit-inner{
-    max-width:880px;
+    max-width:820px;
     margin:0 auto;
     padding:0 22px;
     display:flex;
@@ -393,6 +392,40 @@
     margin:26px 0 18px;
     flex-wrap:wrap;
   }
+  .review-lock-box{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:36px 28px;
+    text-align:center;
+    margin:30px 0;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.05);
+  }
+  .review-lock-box .lock-icon{font-size:36px;margin-bottom:10px;}
+  .review-lock-box h3{margin:0 0 8px;font-size:19px;}
+  .review-lock-box p{color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;max-width:440px;margin-left:auto;margin-right:auto;}
+  .lock-input-row{
+    display:flex;
+    gap:10px;
+    max-width:360px;
+    margin:0 auto;
+  }
+  .lock-input-row input{
+    flex:1;
+    padding:14px 16px;
+    font-size:16px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:#f5f5f7;
+    color:var(--ink);
+    font-family:inherit;
+  }
+  .lock-input-row input:focus{outline:none;border-color:var(--blue);background:#fff;}
+  .passcode-error{
+    color:var(--red);
+    font-size:13.5px;
+    font-weight:600;
+    margin-top:12px;
+  }
   .filter-tab{
     padding:9px 18px;
     border-radius:100px;
@@ -447,8 +480,8 @@
   <div class="hero">
     <div class="wrap">
       <div class="eyebrow">PropBillion · SEM Academy</div>
-      <h1>Advanced Reasoning — Pages 1-18</h1>
-      <p>Scenario-based judgement test, strictly from Pages 1-18: culture, relationship building, voice, communication, storytelling, and calling program. 20 questions. 2 marks each. 40 marks total.</p>
+      <h1>MMS & Systems Exam — Pages 19-27</h1>
+      <p>Covers only Pages 19-27: MMS, Customer Journey Drills, Tagging &amp; Handover, WhatsApp Sales, CRM Mastery, Product Knowledge, Location Mastery. 30 questions. 2 marks each. 60 marks total.</p>
     </div>
   </div>
 
@@ -464,15 +497,15 @@
       </div>
 
       <div class="rules">
-        <div><b>⏱ This is a 35-minute exam.</b> Timer starts the moment you click Start Exam and auto-submits your test when it hits zero.</div>
-        <div><b>Strictly Pages 1-18 only.</b> No MMS, objection handling, negotiation, closing, RERA, sq.ft, or construction here — this tests foundation judgement: culture, relationship building, voice, communication, storytelling, and calling program discipline.</div>
-        <div><b>20 long, detailed scenario questions</b> — read every option carefully before choosing. This is a reasoning test, not a recall test.</div>
-        <div><b>2 marks</b> per question. Total <b>40 marks</b>.</div>
-        <div>No going back once submitted. Answer based on what the training system actually teaches, not general instinct.</div>
-        <div>On submit, your score and full answer review appear instantly, with the module page reference for every question. A report is also sent to the owner.</div>
+        <div><b>⏱ This is a 25-minute exam.</b> Timer starts the moment you click Start Exam and auto-submits your test when it hits zero.</div>
+        <div><b>Strictly Pages 19-27 only.</b> This covers MMS, the Customer Journey Drill Framework, Tagging &amp; Handover, WhatsApp Sales Mastery, CRM Mastery, Product Knowledge, and Location Mastery. Nothing else is tested.</div>
+        <div><b>30 hard questions</b> — but written in simple, easy-to-read language. Read carefully and answer based on exactly what the manual says.</div>
+        <div><b>2 marks</b> per question. Total <b>60 marks</b>.</div>
+        <div>No going back once submitted.</div>
+        <div>Your score is shown right after you submit. To see the correct/wrong answer breakdown, a passcode is needed — your admin will share it with you if required.</div>
       </div>
 
-      <button class="btn-primary" id="startBtn">Start 35-Minute Exam</button>
+      <button class="btn-primary" id="startBtn">Start 25-Minute Exam</button>
     </div>
   </div>
 </div>
@@ -529,13 +562,26 @@
       <div class="stat-box"><div class="val" id="statTime">—</div><div class="lbl">Submitted</div></div>
     </div>
 
-    <div class="filter-tabs">
-      <div class="filter-tab active" data-filter="all">All 50</div>
-      <div class="filter-tab" data-filter="wrong">Wrong Only</div>
-      <div class="filter-tab" data-filter="correct">Correct Only</div>
+    <div id="reviewLockBox" class="review-lock-box">
+      <div class="lock-icon">🔒</div>
+      <h3>Detailed Answer Review is Locked</h3>
+      <p>Your score is shown above. To see which answers were correct, which were wrong, and why — enter the passcode below.</p>
+      <div class="lock-input-row">
+        <input type="password" id="passcodeInput" placeholder="Enter passcode" autocomplete="off">
+        <button class="btn-primary" id="unlockBtn" style="width:auto;padding:14px 28px;">Unlock</button>
+      </div>
+      <div id="passcodeError" class="passcode-error hidden">Incorrect passcode. Try again.</div>
     </div>
 
-    <div id="reviewContainer"></div>
+    <div id="reviewUnlockedContent" class="hidden">
+      <div class="filter-tabs">
+        <div class="filter-tab active" data-filter="all">All 50</div>
+        <div class="filter-tab" data-filter="wrong">Wrong Only</div>
+        <div class="filter-tab" data-filter="correct">Correct Only</div>
+      </div>
+
+      <div id="reviewContainer"></div>
+    </div>
 
     <div class="share-box">
       <h3 id="shareTitle">Report sent to admin</h3>
@@ -552,34 +598,45 @@
    CONFIG — fill in before deploying
    ============================================================ */
 const OWNER_WHATSAPP_NUMBER = "918857090799"; // owner's WhatsApp number, country code + number, no + no spaces
-const PASS_THRESHOLD = 32; // marks out of 40 (80%) considered "Go-Live" pass
-const CONDITIONAL_THRESHOLD = 24; // marks out of 40 (60%) considered "Conditional"
-const EXAM_DURATION_SECONDS = 35 * 60; // 35 minute timer
+const PASS_THRESHOLD = 48; // marks out of 60 (80%) considered "Go-Live" pass
+const CONDITIONAL_THRESHOLD = 36; // marks out of 60 (60%) considered "Conditional"
+const EXAM_DURATION_SECONDS = 25 * 60; // 25 minute timer
+const REVIEW_PASSCODE = "dragon123"; // passcode required to view detailed correct/wrong answer review
 
 /* ============================================================
    QUESTION BANK — 50 questions, 2 marks each
    ============================================================ */
 const QUESTIONS = [
-{tag:"Drill Method", q:"Ek mock call ke dauraan trainer ne candidate ki performance mein 6 alag mistakes note ki hain — voice flat thi, rapport skip hua, qualification adhoori thi, objection galat handle hua, visit-ask hi nahi hua, aur CRM tag galat tha. Session ke end mein feedback dete waqt Trainer Tip ke hisaab se sahi approach kya hai?", opts:["Sirf 1 achhi cheez appreciate karo aur 2 specific fixes par focus karo — usi rep ko fix ke saath dobara karwao, baaki 4 mistakes agle sessions ke liye chhod do","Saari 6 mistakes ek saath detail mein explain karo, taaki candidate ko poori clarity mil jaaye ki kahan-kahan sudharna hai","Kuch bhi mat bolo is session mein, sirf score file karo aur agle din discuss karo","Sabse badi mistake identify karo aur sirf usi par 20 minute discussion karo"], correct:0, explain:"Trainer Tip explicitly locked hai: 'Ek baar mein sirf 2 cheezein theek karwao. Ek saath 10 corrections doge toh sudhaar zero hoga — overload se brain freeze hota hai. Do fixes, pakke karo, phir agle do.' Universal drill method ka Correct step bhi yehi kehta hai: 1 achhi cheez + 2 fixes, phir wahi rep dobara. 6 mistakes ek saath dena counter-productive hai — candidate kuch bhi retain nahi kar payega.", page:3},
-{tag:"Roleplay Method", q:"Trainer roleplay conduct kar raha hai. Session shuru karne se pehle wo candidate ko bata deta hai — 'Main beech mein ek tough objection throw karunga, ready rehna.' Kya yeh sahi practice hai manual ke hisaab se?", opts:["Haan, yeh sahi hai — candidate ko pehle se pata hona chahiye ki kya expect karna hai, taaki wo prepared rahe","Nahi, yeh galat hai — roleplay mein trainer customer persona uthata hai aur bina warning curveball deta hai, taaki real-world unpredictability simulate ho sake","Yeh depend karta hai candidate ke experience level par — freshers ko warning deni chahiye, senior candidates ko nahi","Warning dena optional hai, trainer ki personal choice par depend karta hai"], correct:1, explain:"Manual mein clearly locked hai: 'Roleplay = aap ek customer persona uthate ho (library se), candidate SEM banta hai. Bina warning curveball do.' Real customer interactions mein bhi warning nahi milta — is skill ko roleplay mein bhi usi tarah practice karwana hota hai, warna training artificial ho jaayegi.", page:3},
-{tag:"Trainer Ownership", q:"Ek Day 10 ka trainee floor par ek senior sales executive se casually baat kar raha hai. Senior use apne personal style ke kuch 'shortcuts' bata raha hai jo trainer ke method se different hain — jaise rapport skip karke seedha pricing discuss karna. Trainer Ownership Model ke hisaab se, trainer ko is situation mein kya karna chahiye?", opts:["Kuch nahi karna chahiye, trainee ko sab styles se exposure milna chahiye taaki wo apna khud ka style develop kar sake","Senior executive ko complain karni chahiye HR mein, uski galti hai trainee se baat karna","Trainee ko clearly aur respectfully samjhana chahiye ki abhi wo trainer ke method par train ho raha hai, aur pehle 30 din mein conflicting styles se door rehna zaroori hai — deployment ke baad exposure khulta hai","Trainee ko turant floor se hata dena chahiye taaki wo senior se baat na kar sake"], correct:2, explain:"Trainer Ownership Model explicitly kehta hai: 'Trainee ko Team Leaders, sales teams ya doosre employees ke positive/negative influence se minimize rakho. Fresher abhi shape ho raha hai — conflicting styles aur floor-gossip use confuse karte hain aur bad habits jaldi pakad leta hai.' Trainer ki zimmedari hai yeh clearly, respectfully communicate karna — extreme action (jaise floor se hatana) zaroori nahi hai, par redirect karna zaroori hai.", page:5},
-{tag:"Culture Policy", q:"Ek candidate calling aur closing dono mein bahut talented hai — numbers acche hain. Par wo consistently support staff (office boy, receptionist) ke saath rude behavior karta hai, unhe respect nahi deta. Culture-First Policy ke hisaab se is candidate ko kaise evaluate karna chahiye?", opts:["Uske sales numbers acche hain, isliye behavior ko ignore kar dena chahiye — results sabse important hain","Sirf ek verbal warning de kar aage badh jaana chahiye kyunki wo top performer hai","Support staff se hi expect karna chahiye ki wo adjust kar lein, kyunki candidate revenue generate kar raha hai","Yeh ek serious culture issue hai — 'Ek talented par disrespectful candidate firm ke liye liability hai.' Respect sabhi ke saath (customer, colleague, senior, junior) non-negotiable hai, chahe skill kitna bhi achha ho"], correct:3, explain:"Culture-First Policy locked hai: 'Skill sikhaaya ja sakta hai. Character nahi. Isliye culture non-negotiable hai... Ek talented par disrespectful candidate firm ke liye liability hai — ek average par coachable, honest candidate asset hai.' Respect sabke saath — customer, colleague, senior, junior — sabke liye equally applicable hai, sales performance se independent.", page:5},
-{tag:"Calendar Logic", q:"Ek naya, bahut confident trainee Day 1 ki shaam ko trainer se poochta hai — 'Sir main kal (Day 2) se hi calling start kar sakta hoon kya? Mujhe confidence hai.' Master Calendar aur Coach Note ke hisaab se trainer ko kya jawaab dena chahiye?", opts:["Nahi — Day 2 product base + live-call shadowing ke liye hai; calling Day 3 se shuru hoti hai jab enough base ban chuka hota hai — jaldi shuru karne se pehli call par confidence crash aur buri aadat ban sakti hai","Haan, agar candidate confident hai toh Day 2 se hi calling shuru karwa deni chahiye, confidence important hai","Calling turant Day 1 se hi shuru honi chahiye thi, Day 2 ka wait bhi zaroori nahi hai","Yeh trainer ki personal choice hai, koi fixed rule nahi hai calling start karne ka"], correct:0, explain:"Coach Note explicitly explain karta hai: 'Day 1 comfort, Day 2 product base + live-call shadowing. Bina base ke calling = pehli call par confidence crash + buri aadat. Day 4 tak rukna = momentum loss. Day 3 = enough base + 28 days of live calling. Yeh sweet spot hai.' Confidence hone ke bawajood, base build hue bina calling risky hai.", page:8},
-{tag:"Day 1 Induction", q:"Ek naya trainer apne pehle batch ke Day 1 induction ko plan kar raha hai. Wo sochta hai ki 'expectations clear rakhne ke liye' disqualification criteria aur strict attendance policy Day 1 mein hi explain kar dega, taaki candidates ko shuru se hi pata ho seriousness ka level. Kya yeh sahi approach hai?", opts:["Haan, expectations jitni jaldi clear ho utna behtar hai, isse candidates seriously lenge training ko","Nahi — yeh sabse badi induction galti hai. Common Mistake explicitly warn karta hai ki Day 1 par target/punishment/strict rules/disqualification policy bolne se candidate mentally resist karne lagta hai aur kai Day 2 aate hi nahi. Strict policy Phase 4 (Day 22+) mein aati hai","Yeh depend karta hai batch size par — chhote batch mein Day 1 strict policy theek hai","Sirf disqualification criteria Day 1 mein zaroori hai, baaki policies baad mein"], correct:1, explain:"Common Mistake section explicitly kehta hai: 'Day 1 par target, punishment, strict rules ya disqualification policy bolna. Yeh sabse badi induction galti hai — candidate Day 1 par hi mentally resist karne lagta hai aur kai toh Day 2 nahi aate. Strict policy Phase 4 mein aati hai.' Policy Education Roadmap ke hisaab se strict policies specifically Day 22+ ke liye designed hain, jab candidate already invested ho chuka ho.", page:9},
-{tag:"Policy Roadmap", q:"Ek Day 5 ka trainee abhi tak sirf 'Soft Policies' aur kuch 'Professional Expectations' phase mein hai. Trainer galti se usse ek detailed 'Accountability Standards' style lecture de deta hai — daily/weekly scorecards, targets, aur ownership of numbers par heavy emphasis, jo actually Day 8-15 phase ke liye designed hai. Policy Education Roadmap ke hisaab se is timing mein kya issue hai?", opts:["Koi issue nahi hai, jitni jaldi accountability samjhaya jaaye utna behtar hai","Accountability Standards hamesha Day 1 se hi deni chahiye taaki koi confusion na ho","Yeh premature hai — Policy Roadmap specifically 4 gradual phases design karta hai (Soft Day1-2, Professional Day3-7, Accountability Day8-15, Strict Day22+) taaki candidate overwhelm na ho; standards ko candidate ki comfort aur ownership badhne ke saath hi gradually badhana chahiye","Yeh sirf trainer ki style hai, roadmap flexible hai kisi bhi order mein"], correct:2, explain:"Policy Education Roadmap explicitly kehta hai: 'Policies ek saath thopne se candidate overwhelm + resent karta hai. 4 phases mein gradually introduce karo — jaise comfort aur ownership badhti hai, standards badhte hain.' Har phase ka apna fixed day-range hai, aur early introduction candidate ko overwhelm kar sakta hai jab uska base abhi ban hi raha hai.", page:10},
-{tag:"Daily Rhythm/Grooming", q:"Subah 9:40 AM par grooming audit ke dauraan ek candidate fail ho jaata hai — shirt crushed hai. Uska ek promising lead 10:00 AM par calling ke liye scheduled hai. Daily Operating Rhythm ke rule ke hisaab se kya karna chahiye?", opts:["Grooming ko ignore karo aur candidate ko 10 baje call karne do, kyunki lead promising hai aur time kam hai","Kisi doosre candidate se yeh call karwa do jiska grooming pass hai","Lead ko cancel kar do aur agle din reschedule karo","Grooming audit fail = no client contact till fixed — candidate ko pehle grooming fix karni hogi, phir hi client contact allowed hoga, chahe lead promising ho ya time kam ho"], correct:3, explain:"Daily Operating Rhythm table mein clearly likha hai: 'Grooming audit - fail = no client contact till fixed.' Yeh rule non-negotiable hai — grooming (chahe phone call ho ya in-person) client-facing activity se pehle theek honi chahiye, kyunki phone par bhi presence/confidence grooming se linked hoti hai training philosophy ke hisaab se.", page:11},
-{tag:"Voice/Calling Energy", q:"20-25 calls ke baad ek candidate ki energy aur voice flat ho gayi hai, kyunki wo poore din crowded, noisy floor par baitha hai. Calling Environment Framework (Isolation Calling) ke hisaab se sahi fix kya hoga?", opts:["Ek calm isolated corner mein move karo, khade ho kar ya halki walk karte hue call karo — isolation aur movement energy wapas laate hain, aur calm corner ki call quality crowded floor se hamesha behtar hoti hai","Calling continue karo usi jagah, energy apne aap wapas aa jaayegi jaise din badhega","Calling target ke liye break le lo aur baaki din ke calls cancel kar do","Volume kam kar do calls ka taaki energy conserve ho, quality automatically improve ho jaayegi"], correct:0, explain:"Calling Environment Framework mein clearly hai: 'Calling ek seated activity nahi, ek performance activity hai. Energy gir-ti hai toh khade ho kar ya halki walk karte hue call karwao. Isolation (calm corner) mein call quality crowded floor se hamesha behtar hoti hai — distraction = weak calls.'", page:18},
-{tag:"Relationship Sequence", q:"Ek fresher candidate apni pehli hi call mein customer ko greeting karte hi seedha pricing aur discount discuss karna shuru kar deta hai, bina koi rapport build kiye. Relationship Building Framework ke hisaab se yeh kaunsa principle violate kar raha hai?", opts:["Koi principle violate nahi ho raha, agar customer ko price hi chahiye toh seedha bata dena chahiye","FAMILIAR → TRUSTED → INFLUENTIAL → BUSINESS sequence ko skip kar raha hai — pehli hi baar mein pricing pe koodne wala desperate aur transactional lagta hai, jisse conversion kam hota hai","Yeh MMS ka sahi application hai, time-efficient hai","Yeh sirf ek stylistic choice hai, koi specific framework violation nahi hai"], correct:1, explain:"Relationship Building Framework locked hai: 'Sequence yaad rakho: FAMILIAR → TRUSTED → INFLUENTIAL → BUSINESS. Jo pehle hi din pricing/offer pe kood jaata hai wo desperate aur transactional lagta hai — aur convert nahi karta. Relationship pehle, transaction baad mein.'", page:13},
-{tag:"Listening Ratio", q:"Ek candidate ke calls mein pattern dikh raha hai — wo pura call khud hi bolta rehta hai, customer ko baat karne ka mauka bahut kam milta hai (roughly 80% candidate bol raha hai, 20% customer). Customer Psychology principle ke hisaab se is pattern mein kya problem hai?", opts:["Koi problem nahi hai, jitna zyada information do utna behtar hai customer ke liye","Yeh sirf phone calls mein problem hai, in-person visits mein theek hai","Yeh ideal 60% sunna/40% bolna ratio ke ulta hai — 'Log apne baare mein baat karna pasand karte hain. Jitna customer khud bolega, utna comfortable hoga, utna trust banega. Jo SEM zyada sunta hai, wo zyada bechta hai.'","80/20 ratio actually recommended hai kyunki SEM ko poora control rakhna chahiye conversation par"], correct:2, explain:"Customer Psychology section explicitly kehta hai: 'Aapka kaam 60% sunna, 40% bolna. Jo SEM zyada sunta hai, wo zyada bechta hai.' 80% candidate bolna is ratio ke bilkul ulta hai — customer ko apne baare mein baat karne ka mauka hi nahi milta, jisse trust nahi banta.", page:13},
-{tag:"Voice Warmup", q:"Ek experienced-feeling candidate Day 12 se voice warmup skip karna shuru kar deta hai, yeh kehte hue ki 'mujhe ab confidence hai, warmup ki zaroorat nahi.' Daily Repetition Principle aur Voice Mastery module ke hisaab se trainer ko kya samjhana chahiye?", opts:["Candidate sahi hai — agar confidence aa gaya hai toh warmup optional ho sakta hai","Warmup sirf Day 1-10 ke liye zaroori hai, uske baad optional ho jaata hai","Yeh candidate ki personal choice honi chahiye, trainer ko force nahi karna chahiye","Voice warmup calling se pehle roz MANDATORY hai, chahe candidate kitna bhi confident feel kare — 'jaise athlete bina warmup ke nahi khelta, SEM bina voice warmup ke call nahi karta.' Isse skip karna Daily Repetition Principle ke against hai jo kehta hai skills ek baar nahi, ROZ practice honi chahiye"], correct:3, explain:"Voice Mastery module locked hai: 'Voice warmup har din calling se pehle MANDATORY hai.' Aur Daily Repetition Principle explicitly kehta hai: 'Sabse badi training failure: skill ek baar sikhaya, phir kabhi practice nahi hua.' Confidence hone ke bawajood daily repetition non-negotiable hai — yeh program ka core engine hai.", page:15},
-{tag:"Mirroring", q:"Ek customer call par bahut dheere aur soft-spoken tone mein baat kar raha hai. Candidate isse contrast mein bahut fast aur loud energy ke saath respond kar raha hai, apna 'high energy' style maintain karte hue. Communication Development Program ke 'Mirroring' principle ke hisaab se yeh approach sahi hai ya galat?", opts:["Galat hai — Mirroring principle kehta hai customer dheere bole toh SEM bhi dheere, tez bole toh thoda tez; same energy aur pace match karne se instant comfort aur subconscious trust banta hai. Contrast create karna customer ko uncomfortable kar sakta hai","Sahi hai — high energy hamesha customer ko impress karti hai, style change nahi karni chahiye","Yeh sirf in-person meetings mein applicable hai, phone calls mein nahi","High energy hamesha maintain karni chahiye chahe customer ka tone kuch bhi ho, isse professionalism dikhta hai"], correct:0, explain:"Pro Tip mein clearly diya hai: 'Mirroring: customer dheere bolta hai toh aap bhi dheere; tez hai toh thoda tez. Same energy + pace = instant comfort. Yeh subconscious trust banata hai.' Contrast (customer soft, SEM loud) is principle ke against jaata hai aur customer ko discomfort de sakta hai.", page:16},
-{tag:"Storytelling SPARK", q:"Ek candidate location ke baare mein customer ko convince karne ke liye sirf hard facts aur statistics recite karta hai — connectivity data, infrastructure numbers — bina kisi narrative structure ke. SPARK framework aur Storytelling System ke hisaab se is approach mein kya kami hai?", opts:["Kuch kami nahi hai, facts hamesha stories se zyada convincing hote hain real estate mein","SPARK ka core structure missing hai — Setting, Problem/desire, Action, Result, aur specially Kicker (jo customer ko khud se connect karaye) — 'Dimaag facts ko verify karta hai par kahaniyon ko feel karta hai... Customer numbers bhool jaata hai, kahani yaad rakhta hai'","Facts aur stories dono equally effective hain, koi framework follow karna zaroori nahi","SPARK framework sirf builder-story ke liye hai, location ke liye nahi"], correct:1, explain:"Customer Psychology section explicitly kehta hai: 'Dimaag facts ko verify karta hai par kahaniyon ko feel karta hai. Jab customer kisi aur family ki kahani sunta hai, wo khud ko us jagah imagine karta hai — aur imagination hi decision banata hai.' Sirf facts dena SPARK ke Setting-Problem-Action-Result-Kicker structure ko completely skip kar deta hai, jisse emotional connect nahi banta.", page:17},
-{tag:"Storytelling Compliance", q:"Ek candidate investor customer ko convince karne ke liye ek story sunata hai jisme wo kehta hai — 'Sir, guarantee hai ki 2 saal mein aapka paisa double ho jaayega, jaisa humare doosre investors ke saath hua.' Storytelling System ke Common Mistake section ke hisaab se is line mein kya problem hai?", opts:["Koi problem nahi, agar past mein aisa hua hai toh bolna theek hai","Yeh sirf tab problem hai jab investor first-time buyer ho","Yeh problematic hai — specific guaranteed-return claims RERA-risky hain aur trust kills jab na ho; 'Past mein hua / ho sakta hai' theek hai, par 'guaranteed' bolna serious compliance violation hai","Guarantee wali baat sirf builder-story mein problematic hai, investment-story mein theek hai"], correct:2, explain:"Common Mistake explicitly warn karta hai: 'Specific guaranteed-return claims (2 saal mein paisa double as a promise) RERA risk hain aur trust kills jab na ho. Story illustrative ho, guarantee nahi. Past mein hua / ho sakta hai theek hai; guaranteed nahi.' Yeh sirf ek stylistic issue nahi, ek compliance risk hai jo poori firm ki licence ko risk mein daal sakta hai.", page:17},
-{tag:"Calling Targets", q:"Ek candidate Day 12 par hai (jo 'Full Load' phase — Days 10-24 — ke under aata hai). Uska daily calling average sirf 35 calls/day hai. Calling Program ke daily call targets table ke hisaab se, yeh performance kaisi hai?", opts:["Yeh target ke bilkul according hai, koi issue nahi hai","Full Load phase mein koi fixed target nahi hota, jitna ho sake utna theek hai","35 calls/day 'Medium' phase (Days 5-9) ke liye acceptable hota, lekin Day 12 abhi bhi Medium phase mein hi hai","Yeh below target hai — Full Load phase (Days 10-24) ka target 50-60 calls/day hai. 35 calls/day is target se kaafi kam hai aur isko address karna zaroori hai"], correct:3, explain:"Daily Call Targets table clearly define karti hai: Full load stage (Days 10-24) ka target 50-60 calls/day hai. Day 12 is phase ke andar aata hai, isliye 35 calls/day significantly below-target performance hai jo turant address karni chahiye — grooming/homework jaisi cheezon ki tarah calling volume bhi daily scorecard mein track hoti hai.", page:18},
-{tag:"Daily Repetition", q:"Ek trainer decide karta hai ki Day 10 ke baad se relationship drill aur voice warmup jaisi 'basic' cheezein skip kar dega, kyunki candidates ne already yeh concepts seekh liye hain, aur ab sirf naye advanced topics par focus karega. Daily Repetition Principle ke hisaab se yeh decision kitna sahi hai?", opts:["Galat hai — Daily Repetition Principle specifically kehta hai ki kuch critical skills (voice warmup, relationship drill, mock calls, MMS drill, objection drill, etc.) HAR din repeat honi chahiye, chahe naya skill bhi add ho raha ho. Calendar batata hai kaunsa naya skill kab aayega; rhythm batata hai kaunse skills roz repeat honge — dono saath chalte hain","Bilkul sahi hai — jo seekh liya gaya hai use baar-baar repeat karna time waste hai, naye topics par focus zaroori hai","Yeh sirf voice warmup ke liye sahi hai, relationship drill hamesha continue honi chahiye","Trainer ki discretion hai, koi fixed rule nahi hai kis din tak drills continue karni hain"], correct:0, explain:"Daily Repetition Principle explicitly kehta hai: 'Sabse badi training failure: skill ek baar sikhaya, phir kabhi practice nahi hua. Yeh program use eliminate karta hai.' Aur clearly define karta hai ki 'Repeated daily' skills mein Voice warmup, Relationship drill, Mock calls, MMS drill, Objection drill, Tagging/handover drill aadi shamil hain — 'Calendar batata hai us din kaunsa NAYA skill add hoga; rhythm batata hai kaunse skills ROZ repeat honge. Dono saath chalte hain.'", page:6},
-{tag:"Calendar Phases", q:"Day 20 par ek trainer decide karta hai ki 'ab candidates kaafi ready lag rahe hain,' isliye wo Phase 4 (Revision + Deployment, jo actually Days 26-30 ke liye design hai) ki intensive revision aur certification prep early start kar deta hai. Master Calendar ke hisaab se yeh timing kaisi hai?", opts:["Sahi hai, agar candidates ready lag rahe hain toh phase jaldi start karni chahiye","Yeh premature hai — Day 20 abhi Phase 3 (Field Immersion, Days 16-25) mein hai jisme real sites, negotiation, closing, aur live shadowing focus hai. Phase 4 (Revision + Deployment) specifically Days 26-30 ke liye design hai jab poora skill-set already build ho chuka ho","Phases flexible hote hain, koi fixed day-range nahi hoti","Field Immersion phase optional hai, skip kiya ja sakta hai agar candidate fast learner ho"], correct:1, explain:"Master Calendar mein 4 phases clearly locked hain with fixed day-ranges: Phase 1 Foundation (1-6), Phase 2 Skill Build (7-15), Phase 3 Field Immersion (16-25), Phase 4 Revision + Deployment (26-30). Day 20 Phase 3 ke andar aata hai — is phase ka mission hai 'Real sites, construction/spec, negotiation, closing, live shadowing' — Phase 4 ki revision usse pehle start karna sequence ko todta hai aur field-skills ko incomplete chhod sakta hai.", page:7},
-{tag:"Owner Reporting", q:"Ek trainer sochta hai ki daily owner report sirf tab bhejni chahiye jab koi problem ho — agar sab kuch normal chal raha hai toh report skip kar dega taaki owner ka time waste na ho. Kya yeh approach sahi hai manual ke Progress Monitoring section ke hisaab se?", opts:["Haan, yeh efficient hai — owner ko sirf important updates hi milni chahiye","Weekly report kaafi hai, daily report zaroori nahi","Nahi — Owner ko roz ek 60-second report jaana chahiye, chahe sab normal ho ya na ho. Yeh consistent visibility deta hai aur risk ko jaldi pakadne mein help karta hai, na ki sirf crisis mode mein report bhejna","Yeh sirf Phase 4 (Day 22+) mein zaroori hai, uske pehle optional hai"], correct:2, explain:"Progress Monitoring section mein clearly likha hai: 'Owner ko roz ek 60-second report jaata hai.' Yeh consistent, daily visibility ka system hai — 'Bina score ke training nahi hui — chahe kitni hi activity dikhi ho' jaisa principle bhi yehi kehta hai ki measurement aur reporting ek continuous discipline honi chahiye, sirf problem-based nahi.", page:4},
-{tag:"Money Motivation", q:"Ek trainer socht hai ki money/incentive ki baat karna 'greedy' lagta hai, isliye wo candidates se income growth aur incentive structure discuss karne se avoid karta hai, sirf 'passion for sales' par focus karta hai. Money Motivation Framework ke hisaab se yeh approach sahi hai?", opts:["Haan, sahi hai — paise ki baat karna unprofessional lagta hai training mein","Sirf senior candidates ke saath money discuss karni chahiye, freshers ke saath nahi","Money Motivation sirf Day 30 ke baad discuss karni chahiye, training ke dauraan nahi","Nahi — Money Motivation Framework explicitly kehta hai ki trainee ko clearly samjhana chahiye ki 'sales zindagi badalti hai. Yeh greed nahi, professional ambition hai.' Income growth, career growth (Telecaller→SEM→TL→Manager), aur opportunity ko real examples ke saath discuss karna training ka hi ek part hai"], correct:3, explain:"Money Motivation Framework locked hai: 'Trainee ko clearly samajhna chahiye: sales zindagi badalti hai. Yeh greed nahi, professional ambition hai. Jitna better banunga, utna zyada kamaunga.' Isme Income growth (real example se), Career growth (path dikhana), aur Opportunity (top performers ki recognition) — teeno explicitly discuss karne ko kaha gaya hai, avoid karne ko nahi.", page:5}
+{tag:"MMS", q:"MMS ka full form kya hai?", opts:["Minimum Minute Strategy","Maximum Marketing Strategy","Multiple Message System","Manual Monitoring Sheet"], correct:0, explain:"MMS ka matlab hai Minimum Minute Strategy. Iska maksad hai kam se kam time mein lead ko qualify karna, visit book karna, ya agla step tay karna — relationship-first tone ke saath.", page:19},
+{tag:"MMS", q:"MMS call ke architecture mein 'Visit-ask' step kis time par aata hai?", opts:["0-30 second","180-240 second","30-120 second","120-180 second"], correct:1, explain:"MMS call architecture mein Visit-ask (pivot) step 180-240 second ke beech mein aata hai. Isme customer ko ek weekend slot offer kiya jaata hai visit ke liye.", page:19},
+{tag:"MMS", q:"Poori MMS call ka total time target kya hai?", opts:["1-2 minute","8-10 minute","3-5 minute","15 minute"], correct:2, explain:"MMS call architecture 5 steps mein design hai jo total 3-5 minute (0-300 second) mein complete hoti hai.", page:19},
+{tag:"MMS", q:"Customer bole — 'Sirf rate bata do' — MMS ka sahi jawaab kya hai?", opts:["Turant final rate bata do","Call disconnect kar do","Bina kuch bole call band kar do","Bolo ki rate floor/config se badalta hai, dekhne aao toh exact best price milega"], correct:3, explain:"MMS fast pivot table mein diya gaya jawaab hai: 'Rate bata deta hoon, par floor/config se badalta hai. Dekh lo toh exact best price nikaal ke deta hoon.' Yeh visit ki taraf pivot karta hai.", page:19},
+{tag:"MMS", q:"Customer bole — 'Abhi time nahi hai' — MMS ka sahi pivot kya hai?", opts:["Bolo isliye weekend slot de raha hoon jab aap free ho, sirf 15-20 min lagega","Call end kar do","Discount offer kar do","Kal call karne ko bolo"], correct:0, explain:"MMS pivot table ke hisaab se jawaab hai: 'Isliye weekend slot de raha hoon jab aap free ho — 15-20 min bas. Saturday subah?' Yeh customer ki busy-ness ko respect karte hue visit fix karta hai.", page:19},
+{tag:"MMS Field Secret", q:"Field Secret ke hisaab se MMS ka sabse important moment kaunsa hai?", opts:["Open + rapport","Visit-ask","Qualify","Lock next step"], correct:1, explain:"Field Secret kehta hai: 'MMS ka asli moment visit-ask hai. 80% freshers visit maangte hi nahi.' Achhi baat karna kaafi nahi hai — locked visit hi asli goal hai.", page:20},
+{tag:"MMS Drills", q:"Cold-release drill mein cold lead ko kitne second mein respect se release karna sikhaya jaata hai?", opts:["30 second","2 minute","60 second","5 minute"], correct:2, explain:"MMS daily drills mein 'Cold-release' drill hai — cold lead ko 60 second mein respect se release karna, taaki energy hot leads par lage.", page:20},
+{tag:"Customer Journey", q:"Customer Journey Drill Framework mein total kitne micro-skills diye gaye hain?", opts:["10","12","20","16"], correct:3, explain:"Customer ka poora safar 16 micro-skills mein toda gaya hai — jaise Calling, Relationship, Appointment-fixing, Tagging, Handover, Site visit, Objection, Closing, aur baaki.", page:21},
+{tag:"Customer Journey", q:"'Tagging drill' ka pass signal kya hai?", opts:["Right status aur clean notes CRM mein daale jaate hain","Customer smile karta hai","Visit lock hoti hai","Customer trust karta hai"], correct:0, explain:"Customer Journey table mein Tagging drill ka pass signal hai: 'Right status + clean notes.' Yeh CRM aur verbal dono tagging ke liye applicable hai.", page:21},
+{tag:"Customer Journey", q:"Trainer Tip ke hisaab se, saare 16 micro-skills ko ek 'chain' mein kab jodna shuru karte hain?", opts:["Day 1 se hi","Days 4-15 tak alag-alag practice, phir Days 15+ se chain","Sirf Day 30 par ek baar","Chain kabhi nahi banti, sab alag hi rehte hain"], correct:1, explain:"Trainer Tip kehta hai: 'Pehle har drill alag practice karwao (Days 4-15). Phir Days 15+ inhe ek CHAIN mein jodo.' Yeh full journey mock deployment ka asli test hai.", page:21},
+{tag:"Tagging", q:"Tagging ke do types kaunse hain?", opts:["Hot aur Cold","Manual aur Auto","CRM tagging aur Verbal tagging","Positive aur Negative"], correct:2, explain:"Tagging ke do kinds hain: CRM tagging (status, notes, source, budget CRM mein daalna) aur Verbal tagging (customer ko team ke saamne sahi tarah se positioning dena).", page:22},
+{tag:"Handover", q:"Handover formula ka pehla step kya hai?", opts:["Elevate the senior","Tag customer positively","Reassure continuity","Bridge — loop close karna"], correct:3, explain:"Handover formula ke 4 steps: 1) Bridge (loop close karo), 2) Elevate the senior, 3) Tag customer positively, 4) Reassure continuity.", page:22},
+{tag:"Handover", q:"Achhe handover mein customer ko kaisa feel hona chahiye?", opts:["Upgrade kiya ja raha hai, senior expert dekh raha hai","Pass-on kiya ja raha hai","Ignore kiya ja raha hai","Confuse kiya ja raha hai"], correct:0, explain:"Sahi handover mein customer ko lagta hai 'mujhe upgrade kiya ja raha hai.' Yehi feeling deal ko banati hai, na ki 'mujhe pass kiya jaa raha hai' wali feeling.", page:22},
+{tag:"Roleplay", q:"50+ tagging/handover roleplay combinations kitne customer types se banti hain?", opts:["4 types","8 types","12 types","20 types"], correct:1, explain:"8 customer types × alag moods × alag situations = 50+ combinations. Roz 5 roleplays karwaye jaate hain.", page:23},
+{tag:"Handover Mistake", q:"Handover ki common mistake kya hai?", opts:["Senior ko customer intro na karna","Customer ko chai dena","Senior ke saamne customer ki poori baat dobara dohrana","CRM update karna"], correct:2, explain:"Common mistake hai senior ke saamne info dobara poori dohrana — customer bore hota hai aur lagta hai ki note hi nahi kiya. Crisp 2-line positioning deni chahiye.", page:23},
+{tag:"WhatsApp", q:"'Last-message science' principle kya kehta hai?", opts:["Aakhri message dry 'ok' hona chahiye","Kabhi last message mat bhejo","Sirf photos forward karo, text mat likho","Aakhri message aapka ho, par value ke saath"], correct:3, explain:"Last-message science kehta hai: aakhri message aapka ho, par usme value ho (koi sawaal ya offer) — dry 'ok' nahi. Isse customer reply karta hai.", page:24},
+{tag:"WhatsApp", q:"'Chat positioning' principle ka matlab kya hai?", opts:["Customer ki chat list mein top par rehna, useful content se, spam se nahi","Sabse zyada messages bhejna","Sirf subah message karna","Har ghante follow-up karna"], correct:0, explain:"Chat positioning kehta hai: customer ke chat list mein top-of-mind rehna hai — useful content ke through, spam se nahi.", page:24},
+{tag:"WhatsApp", q:"'Screenshot selling' mein kya zaroori hai?", opts:["Jhoothi scarcity dikhana taaki jaldi book ho","Sirf sach cheezein dikhana — jaise real price-rise notice ya genuine demand","Kabhi screenshot na bhejna","Sirf builder ke photos bhejna"], correct:1, explain:"Screenshot selling mein sirf genuine cheezein dikhani chahiye — price-rise notice, sold-out units, sachi demand — jhooth nahi.", page:24},
+{tag:"WhatsApp", q:"Lambi baat WhatsApp par karni ho toh kya use karna behtar hai?", opts:["Ek bahut lambi text message","Sirf ek emoji bhej dena","20-30 second ka voice note","Call kar lena aur WhatsApp avoid karna"], correct:2, explain:"WhatsApp Sales Mastery kehta hai: lambi baat ke liye 20-30 sec warm voice note best hai — text se zyada personal lagta hai.", page:24},
+{tag:"CRM", q:"CRM mein sabse mehngi (costly) aadat kya batayi gayi hai?", opts:["Turant update karna","Notes likhna","Follow-up set karna","'Baad mein update kar dunga' wali soch"], correct:3, explain:"Common mistake hai: 'Baad mein update kar dunga.' Shaam tak aadhi details bhool jaati hain. CRM turant update karna chahiye.", page:25},
+{tag:"CRM", q:"CRM ke Field Secret ke hisaab se, agar SEM chhutti par ho toh kya hona chahiye?", opts:["Koi bhi colleague uski lead utha kar continue kar sake, kyunki CRM clean hai","Uski lead koi bhi na chhue","Lead automatically cancel ho jaaye","Customer ko wait karna chahiye SEM ke wapas aane tak"], correct:0, explain:"Field Secret kehta hai: top performers ka CRM itna clean hota hai ki koi bhi unki lead utha kar continue kar sakta hai — yahi ek SEM ko reliable banata hai.", page:25},
+{tag:"CRM", q:"CRM ke 'Notes' section mein kya likhna chahiye har interaction ke baad?", opts:["Sirf customer ka naam","Kya hua, customer ne kya kaha, aur next step kya hai","Sirf date aur time","Kuch bhi likhna zaroori nahi"], correct:1, explain:"CRM Mastery ke hisaab se Notes mein crisp likhna chahiye: kya hua, customer ne kya kaha, aur next step kya hai.", page:25},
+{tag:"Product Knowledge", q:"1-Page Project Cheat Sheet mein kaunsi field NAHI hoti?", opts:["Top 3 USPs","Top 3 objections","Competitor ka poora annual revenue","1 story"], correct:2, explain:"Cheat sheet mein hoti hain: Project+builder, Location+RERA, Configurations, Pricing, Possession, Top 3 USPs, Top 3 objections, aur 1 story. Competitor ka revenue isme nahi hota.", page:26},
+{tag:"Product Knowledge", q:"Best Practice ke hisaab se, cheat sheet kaise banani chahiye?", opts:["Kisi doosre candidate se copy karke","Trainer se likhwa kar","Internet se print karke","Candidate khud likhe, copy nahi — khud likhne se yaad rehta hai"], correct:3, explain:"Best Practice mein clearly likha hai: 'Har candidate har active project ka cheat-sheet khud likhe (copy nahi) aur memorize kare. Khud likhne se yaad rehta hai.'", page:26},
+{tag:"Cost Sheet", q:"Cost sheet drill mein candidate ko kitne minute mein all-inclusive price explain karni hoti hai?", opts:["3 minute","1 minute","10 minute","30 minute"], correct:0, explain:"Trainer Tip mein diya hai: cost sheet drill (Day 12+) mein raw cost sheet do, candidate 3 min mein all-inclusive price + rough EMI explain kare.", page:26},
+{tag:"Location Mastery", q:"Location Mastery ke hisaab se distance kis unit mein bolni chahiye?", opts:["Kilometre mein","Minutes mein","Miles mein","Distance batane ki zaroorat nahi"], correct:1, explain:"Pro Tip kehta hai: 'Distance ko km mein nahi, MINUTES mein bolo — Hinjewadi 15 min, airport 25 min. Customer time mein sochta hai, kilometre mein nahi.'", page:27},
+{tag:"Location Mastery", q:"Pune belt focus mein kaunse areas mention kiye gaye hain?", opts:["Sirf Mumbai ke areas","Sirf South Pune","Kharadi, Baner, Pimpri-Chinchwad, Akurdi, Hinjewadi corridor","Kharadi aur Baner sirf"], correct:2, explain:"Location Mastery mein specific Pune belt areas diye gaye hain: Kharadi, Baner, Pimpri-Chinchwad, Akurdi, aur Punawale-Wakad-Hinjewadi corridor.", page:27},
+{tag:"Location Mastery", q:"Location pitch drill (Day 10+) mein candidate ko kya karna hota hai?", opts:["Sirf brochure padhna","Sirf ek word mein answer dena","Location ka naam bolna kaafi hai","Bina notes ke 60-sec narrative bolna — connectivity se lifestyle tak"], correct:3, explain:"Location pitch drill mein candidate bina notes ke 60-sec narrative bolta hai — connectivity → employment → lifestyle → future growth, ek story ke saath.", page:27},
+{tag:"MMS", q:"MMS architecture mein 'Open + rapport' step kis time window mein hota hai?", opts:["0-30 second","30-120 second","120-180 second","180-240 second"], correct:0, explain:"MMS call architecture ka pehla step 'Open + rapport' 0-30 second mein hota hai — strong greeting aur ek warm line ke saath.", page:19},
+{tag:"MMS", q:"MMS ka 'Lock next step' final step kis time window mein hota hai?", opts:["0-30 second","240-300 second","120-180 second","180-240 second"], correct:1, explain:"MMS architecture ka last step 'Lock next step' 240-300 second mein hota hai — visit/callback/WhatsApp confirm karna.", page:19}
 ];
 
 /* ============================================================
@@ -591,6 +648,7 @@ let answers = new Array(QUESTIONS.length).fill(null);
 let timeRemaining = EXAM_DURATION_SECONDS;
 let timerInterval = null;
 let hasSubmitted = false;
+let currentDetail = null;
 
 /* ============================================================
    RENDER QUESTIONS
@@ -747,13 +805,17 @@ function renderResults(result, name, day, timestamp){
   document.getElementById('statWrong').textContent = result.wrongCount;
   document.getElementById('statTime').textContent = timestamp;
 
-  renderReviewList(result.detail, 'all');
+  currentDetail = result.detail;
+  document.getElementById('reviewLockBox').classList.remove('hidden');
+  document.getElementById('reviewUnlockedContent').classList.add('hidden');
+  document.getElementById('passcodeInput').value = "";
+  document.getElementById('passcodeError').classList.add('hidden');
 
   document.querySelectorAll('.filter-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      renderReviewList(result.detail, tab.dataset.filter);
+      renderReviewList(currentDetail, tab.dataset.filter);
     });
   });
 }
@@ -845,6 +907,23 @@ ${reviewLink}`;
 /* ============================================================
    EVENT WIRING
    ============================================================ */
+function tryUnlockReview(){
+  const entered = document.getElementById('passcodeInput').value.trim();
+  if(entered === REVIEW_PASSCODE){
+    document.getElementById('reviewLockBox').classList.add('hidden');
+    document.getElementById('reviewUnlockedContent').classList.remove('hidden');
+    renderReviewList(currentDetail, 'all');
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    document.querySelector('.filter-tab[data-filter="all"]').classList.add('active');
+  } else {
+    document.getElementById('passcodeError').classList.remove('hidden');
+  }
+}
+document.getElementById('unlockBtn').addEventListener('click', tryUnlockReview);
+document.getElementById('passcodeInput').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') tryUnlockReview();
+});
+
 document.getElementById('startBtn').addEventListener('click', () => {
   const nameVal = document.getElementById('candName').value.trim();
   const dayVal = document.getElementById('candDay').value.trim();
