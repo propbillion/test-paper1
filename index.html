@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>YOO Pristine — Floor Plan Mastery Exam</title>
+<title>YOO Pristine — Floor Plan Exam (Re-Test)</title>
 <style>
   :root{
     --bg:#fbfbfd;
@@ -15,7 +15,7 @@
     --green:#1d7a3e;
     --red:#c7372f;
     --card:#ffffff;
-    --radius:18px;
+    --radius:20px;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -30,23 +30,28 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    padding:64px 0 40px;
+    padding:76px 0 46px;
     text-align:center;
     border-bottom:1px solid var(--line);
+    background:radial-gradient(ellipse 60% 100% at 50% 0%, rgba(0,113,227,.05), transparent 70%);
   }
   .eyebrow{
     font-size:13px;
     font-weight:600;
-    letter-spacing:.06em;
+    letter-spacing:.08em;
     text-transform:uppercase;
     color:var(--blue);
-    margin-bottom:10px;
+    margin-bottom:12px;
   }
   .hero h1{
-    font-size:clamp(32px,5vw,48px);
+    font-size:clamp(34px,5.5vw,52px);
     font-weight:700;
-    letter-spacing:-0.015em;
-    margin:0 0 12px;
+    letter-spacing:-0.022em;
+    margin:0 0 14px;
+    background:linear-gradient(180deg,#1d1d1f 0%, #3a3a3d 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
   .hero p{
     font-size:19px;
@@ -59,9 +64,10 @@
   .start-card{
     background:var(--card);
     border-radius:var(--radius);
-    padding:32px;
+    padding:36px;
     margin:36px 0;
-    box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.05);
+    border:1px solid rgba(0,0,0,.04);
+    box-shadow:0 2px 4px rgba(0,0,0,.03),0 16px 40px rgba(0,0,0,.06);
   }
   .field{margin-bottom:20px;}
   .field label{
@@ -106,17 +112,18 @@
     color:#fff;
     border:none;
     border-radius:980px;
-    padding:14px 30px;
+    padding:15px 30px;
     font-size:17px;
     font-weight:600;
     cursor:pointer;
     width:100%;
-    transition:background .15s ease, transform .1s ease;
+    transition:background .2s cubic-bezier(.4,0,.2,1), transform .15s cubic-bezier(.4,0,.2,1), box-shadow .2s ease;
     font-family:inherit;
+    box-shadow:0 1px 2px rgba(0,113,227,.15);
   }
-  .btn-primary:hover{background:var(--blue-dark);}
-  .btn-primary:active{transform:scale(.985);}
-  .btn-primary:disabled{background:#c8c8ca;cursor:not-allowed;}
+  .btn-primary:hover{background:var(--blue-dark); box-shadow:0 4px 14px rgba(0,113,227,.28); transform:translateY(-1px);}
+  .btn-primary:active{transform:scale(.985) translateY(0);}
+  .btn-primary:disabled{background:#c8c8ca;cursor:not-allowed;box-shadow:none;transform:none;}
 
   .btn-secondary{
     display:inline-flex;
@@ -206,8 +213,11 @@
     border-radius:var(--radius);
     padding:26px 26px 20px;
     margin-bottom:16px;
-    box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.04);
+    border:1px solid rgba(0,0,0,.04);
+    box-shadow:0 1px 2px rgba(0,0,0,.03),0 10px 26px rgba(0,0,0,.045);
+    transition:box-shadow .2s ease;
   }
+  .q-card:hover{box-shadow:0 2px 6px rgba(0,0,0,.05),0 14px 34px rgba(0,0,0,.07);}
   .q-meta{
     display:flex;
     justify-content:space-between;
@@ -241,17 +251,18 @@
     display:flex;
     align-items:flex-start;
     gap:12px;
-    padding:13px 16px;
+    padding:14px 16px;
     border:1.5px solid var(--line);
-    border-radius:12px;
+    border-radius:13px;
     cursor:pointer;
-    transition:border-color .12s ease, background .12s ease;
+    transition:border-color .15s cubic-bezier(.4,0,.2,1), background .15s cubic-bezier(.4,0,.2,1), transform .1s ease;
     font-size:15.5px;
   }
-  .option:hover{background:#f5f5f7;}
+  .option:hover{background:#f5f5f7; border-color:#b8b8bd;}
   .option.selected{
     border-color:var(--blue);
     background:#eef6ff;
+    box-shadow:0 0 0 1px var(--blue);
   }
   .option input{accent-color:var(--blue);margin-top:2px;flex-shrink:0;}
   .option .opt-letter{
@@ -479,9 +490,9 @@
 <div id="startScreen">
   <div class="hero">
     <div class="wrap">
-      <div class="eyebrow">PropBillion · YOO Pristine</div>
-      <h1>YOO Pristine — Floor Plan Mastery Exam</h1>
-      <p>A, B &amp; C Building. Tests exact carpet areas, room dimensions, combine-unit configurations, refuge floors, and project-level data. 38 questions. 3 marks each. 114 marks total.</p>
+      <div class="eyebrow">PropBillion · YOO Pristine · Re-Test</div>
+      <h1>Floor Plan Exam — A, B &amp; C Building</h1>
+      <p>Fresh set of questions — carpet areas, room dimensions, combine-unit configs, and refuge floors across A, B and C Building. 50 questions. 2 marks each. 100 marks total.</p>
     </div>
   </div>
 
@@ -498,10 +509,10 @@
 
       <div class="rules">
         <div><b>⏱ This is a 20-minute exam.</b> Timer starts the moment you click Start Exam and auto-submits your test when it hits zero.</div>
-        <div><b>Covers A, B and C Building</b> — exact carpet areas, room-wise dimensions, combine-unit configs (4.5 BHK, 2.5 BHK), garden vs no-garden variants, refuge floors, and project-level data. Wrong config or area quoted to a client is a credibility risk, not a typo — this exam checks if you know it cold.</div>
-        <div><b>38 hard questions</b> — exact numbers matter here. Read carefully.</div>
-        <div><b>3 marks</b> per question. Total <b>114 marks</b>.</div>
-        <div>No going back once submitted.</div>
+        <div><b>This is a re-test with a completely fresh question set.</b> Covers A, B and C Building — carpet areas, room dimensions, combine-unit configs (4.5 BHK, 2.5 BHK), garden variants, and refuge floors. Wrong config or area quoted to a client is a credibility risk, not a typo.</div>
+        <div><b>50 questions</b>, simple language, but exact numbers matter. Read carefully.</div>
+        <div><b>2 marks</b> per question. Total <b>100 marks</b>.</div>
+        <div><b>Passing marks: 85%.</b> No going back once submitted.</div>
         <div>Your score is shown right after you submit. To see the correct/wrong answer breakdown, a passcode is needed.</div>
       </div>
 
@@ -575,7 +586,7 @@
 
     <div id="reviewUnlockedContent" class="hidden">
       <div class="filter-tabs">
-        <div class="filter-tab active" data-filter="all">All 38</div>
+        <div class="filter-tab active" data-filter="all">All 50</div>
         <div class="filter-tab" data-filter="wrong">Wrong Only</div>
         <div class="filter-tab" data-filter="correct">Correct Only</div>
       </div>
@@ -598,53 +609,65 @@
    CONFIG — fill in before deploying
    ============================================================ */
 const OWNER_WHATSAPP_NUMBER = "918857090799"; // owner's WhatsApp number, country code + number, no + no spaces
-const PASS_THRESHOLD = 91; // marks out of 114 (80%) considered "Go-Live" pass
-const CONDITIONAL_THRESHOLD = 68; // marks out of 114 (60%) considered "Conditional"
+const PASS_THRESHOLD = 85; // marks out of 100 (85%) considered "Go-Live" pass
+const CONDITIONAL_THRESHOLD = 60; // marks out of 100 (60%) considered "Conditional"
 const EXAM_DURATION_SECONDS = 20 * 60; // 20 minute timer
-const REVIEW_PASSCODE = "dragon123"; // passcode required to view detailed correct/wrong answer review
+const REVIEW_PASSCODE = "123dragon"; // passcode required to view detailed correct/wrong answer review
 
 /* ============================================================
    QUESTION BANK — 50 questions, 2 marks each
    ============================================================ */
 const QUESTIONS = [
-{tag:"A Building", q:"A Building mein 4 BHK Flat Series 3 ka carpet area kitna hai?", opts:["1562 sq.ft","1512 sq.ft","1377 sq.ft","1630 sq.ft"], correct:0, explain:"4 BHK Series 3 ka carpet area 1562 sq.ft (145.14 sq.m) hai — A Building ka sabse bada individual unit.", page:"YOO Pristine — A Building Spec Sheet"},
-{tag:"A Building", q:"A Building mein 4 BHK Flat Series 1 ka carpet area kitna hai?", opts:["1562 sq.ft","1512 sq.ft","1377 sq.ft","1450 sq.ft"], correct:1, explain:"4 BHK Series 1 ka carpet area 1512 sq.ft (140.43 sq.m) hai — Series 3 (1562 sq.ft) se thoda chhota.", page:"YOO Pristine — A Building Spec Sheet"},
-{tag:"A Building", q:"A Building mein 3 BHK Flat Series 2 ka carpet area kitna hai?", opts:["1130 sq.ft","1512 sq.ft","1377 sq.ft","1250 sq.ft"], correct:2, explain:"3 BHK Series 2 ka carpet area 1377 sq.ft (127.89 sq.m) hai.", page:"YOO Pristine — A Building Spec Sheet"},
-{tag:"A Building Rooms", q:"A Building ke saare units mein Living Room ka size kya hai (common across series)?", opts:["11'0\" x 15'11\"","12'0\" x 16'5\"","12'6\" x 10'2\"","12'0\" x 19'0\""], correct:3, explain:"A Building ke 4BHK aur 3BHK, teeno series mein Living Room 12'0\" x 19'0\" hai — consistent size.", page:"YOO Pristine — A Building Spec Sheet"},
-{tag:"A Building Rooms", q:"A Building Series 3 mein Foyer ka size kya hai?", opts:["7'11\" x 9'5\"","7'2\" x 3'11\"","8'0\" x 9'11\"","5'3\" x 3'7\""], correct:0, explain:"Series 3 ka Foyer 7'11\" x 9'5\" hai. Note: A Building ke teeno series mein Foyer size kaafi alag-alag hai — Series 1 mein 7'2\"x3'11\" hai, Series 2 mein 8'0\"x9'11\" hai.", page:"YOO Pristine — A Building Spec Sheet"},
-{tag:"A Building Rooms", q:"A Building Series 1 mein Master Bedroom (jo yahan 'Bedroom 3 (Master)' likha hai) ka size kya hai?", opts:["12'1\" x 11'0\"","12'11\" x 11'0\"","11'0\" x 12'0\"","12'0\" x 15'11\""], correct:1, explain:"Series 1 mein Master, 'Bedroom 3 (Master)' naam se hai, size 12'11\" x 11'0\". Series 3 aur Series 2 mein Master Bedroom size alag hai — 12'1\"x11'0\".", page:"YOO Pristine — A Building Spec Sheet"},
-{tag:"A Building Rooms", q:"A Building ke teeno series (1,2,3) mein Sitout 2 ka common size kya hai?", opts:["12'0\" x 5'11\"","11'0\" x 3'11\"","8'0\" x 3'5\"","8'6\" x 3'11\""], correct:2, explain:"Sitout 2 saare A Building units mein 8'0\" x 3'5\" hai. Sitout 1 alag size hai — 12'0\"x5'11\".", page:"YOO Pristine — A Building Spec Sheet"},
-{tag:"B Building", q:"B Building mein 2 BHK Flat Series 2 ka carpet area kitna hai?", opts:["814 sq.ft","1130 sq.ft","800 sq.ft","817 sq.ft"], correct:3, explain:"2 BHK Series 2 ka carpet area 817 sq.ft (75.88 sq.m) hai.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"B Building", q:"B Building mein 2 BHK Flat Series 4 ka carpet area kitna hai (Series 2 ka mirror layout)?", opts:["814 sq.ft","817 sq.ft","820 sq.ft","800 sq.ft"], correct:0, explain:"Series 4, Series 2 ka mirror layout hai — same room grid, par area marginally different — 814 sq.ft (75.59 sq.m), wall offset ki wajah se.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"B Building", q:"B Building mein 3 BHK Flat Series 6 ka carpet area kitna hai?", opts:["1352 sq.ft","1130 sq.ft","1631 sq.ft","1377 sq.ft"], correct:1, explain:"3 BHK Series 6 ka carpet area 1130 sq.ft (104.97 sq.m) hai.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"B Building", q:"B Building mein 3.5 BHK Flat Series 6 ka carpet area kitna hai?", opts:["1130 sq.ft","1631 sq.ft","1352 sq.ft","1180 sq.ft"], correct:2, explain:"3.5 BHK Series 6 ka carpet area 1352 sq.ft (125.62 sq.m) hai — 3 BHK Series 6 (1130 sq.ft) se bada, extra 'Family Area (0.5 BHK)' room ki wajah se.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"B Building", q:"3.5 BHK mein woh extra room konsa hai jo isse 3 BHK se alag banata hai?", opts:["Ek extra bedroom pura","Ek extra kitchen","Ek extra toilet","'Family Area (0.5 BHK)' — 11'0\" x 12'0\""], correct:3, explain:"3.5 BHK mein 'Family Area (0.5 BHK)' naam ka ek room hai, size 11'0\"x12'0\" — yahi '0.5' count add karta hai 3 BHK ke upar.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"B Building", q:"B Building ka 4.5 BHK 'Combine Unit' kaise banta hai?", opts:["Do 2 BHK units (Series 3 & 4, 817+814 sqft) jodkar","Ek 3BHK aur ek 2BHK jodkar","Do 3.5 BHK jodkar","Ek naye standalone design se"], correct:0, explain:"4.5 BHK Combine Unit do 2 BHK units (Series 3 & 4) ko jodkar banta hai — 817 + 814 sq.ft ke units combine hoke ek bada unit banate hain.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"B Building", q:"B Building ke 4.5 BHK Combine Unit ka total carpet area kitna hai?", opts:["1352 sq.ft","1631 sq.ft","1130 sq.ft","1700 sq.ft"], correct:1, explain:"4.5 BHK Combine Unit ka carpet area 1631 sq.ft (151.47 sq.m) hai.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"B Building Rooms", q:"B Building ke 2 BHK units mein Living Room ka size kya hai?", opts:["12'0\" x 19'0\"","12'0\" x 16'5\"","11'0\" x 15'11\"","12'6\" x 10'2\""], correct:2, explain:"B Building ke 2 BHK ka Living Room 11'0\" x 15'11\" hai — A Building ke Living Room (12'0\"x19'0\") se chhota.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"B Building Rooms", q:"B Building ke 3 BHK aur 3.5 BHK units mein Living Room ka size kya hai?", opts:["11'0\" x 15'11\"","12'0\" x 19'0\"","22'5\" x 15'11\"","12'0\" x 16'5\""], correct:3, explain:"3 BHK aur 3.5 BHK (dono Series 6) ka Living Room 12'0\" x 16'5\" hai.", page:"YOO Pristine — B Building Spec Sheet"},
-{tag:"C Building", q:"C Building mein 1 BHK Flat Series 6 ka carpet area kitna hai (garden wale variant mein)?", opts:["588 sq.ft","527 sq.ft","592 sq.ft","530 sq.ft"], correct:0, explain:"1 BHK Series 6 with garden ka carpet area 588 sq.ft (48.93 sq.m + garden 5.70 sq.m, total 54.63 sq.m) hai.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building", q:"C Building mein 1 BHK Flat Series 6 ka no-garden variant ka carpet area kitna hai (same layout)?", opts:["588 sq.ft","527 sq.ft","592 sq.ft","530 sq.ft"], correct:1, explain:"No-garden variant same layout hai par carpet area 527 sq.ft hota hai — garden wale (588 sq.ft) se kam.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building", q:"C Building mein 1 BHK Flat Series 5 ka carpet area kitna hai (garden wale variant mein)?", opts:["588 sq.ft","527 sq.ft","592 sq.ft","530 sq.ft"], correct:2, explain:"1 BHK Series 5 with garden ka carpet area 592 sq.ft (49.28 sq.m + garden, total 54.98 sq.m) hai — Series 6 (588) se thoda zyada.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building", q:"C Building mein 1 BHK Flat Series 5 ka no-garden variant ka carpet area kitna hai?", opts:["592 sq.ft","588 sq.ft","527 sq.ft","530 sq.ft"], correct:3, explain:"No-garden Series 5 variant ka carpet area 530 sq.ft hai.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building", q:"C Building ke 1 BHK 'with garden' variant mein garden ka size kya add hota hai?", opts:["5.70 sq.m","11.40 sq.m","10.0 sq.m","8.87 sq.m"], correct:0, explain:"Garden 5.70 sq.m add hota hai 1 BHK units mein. 2.5 BHK combine unit mein yeh double ho jaata hai (2 units jud rahe hain) — 11.40 sq.m.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building", q:"C Building ka 2.5 BHK 'Combine Unit' kaunse do units jodkar banta hai?", opts:["Ek 1BHK aur ek 2BHK jodkar","Do 1 BHK units (Series 5 & 6) jodkar","Ek 2BHK ko split karke","Do 2BHK units jodkar"], correct:1, explain:"2.5 BHK Combine Unit do 1 BHK units (Series 5 & 6) ko jodkar banta hai.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building", q:"C Building ke 2.5 BHK Combine Unit ka carpet area kitna hai (garden variant mein)?", opts:["1057 sq.ft","1130 sq.ft","1180 sq.ft","1352 sq.ft"], correct:2, explain:"2.5 BHK with garden ka carpet area 1180 sq.ft (98.21 sq.m + garden 11.40 sq.m, total 109.61 sq.m) hai.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building", q:"C Building ke 2.5 BHK Combine Unit ka no-garden carpet area kitna hai?", opts:["1180 sq.ft","1130 sq.ft","1000 sq.ft","1057 sq.ft"], correct:3, explain:"No-garden 2.5 BHK variant ka carpet area 1057 sq.ft hai.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building Rooms", q:"C Building ke 1 BHK units mein Living Room ka size kya hai?", opts:["12'6\" x 10'2\"","11'0\" x 15'11\"","12'0\" x 19'0\"","12'6\" x 20'8\""], correct:0, explain:"C Building ke 1 BHK ka Living Room 12'6\" x 10'2\" hai — sabse chhota Living Room configuration in teeno buildings mein.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"C Building Rooms", q:"2.5 BHK Combine Unit mein Living & Dining ka combined size kya hai?", opts:["12'6\" x 10'2\"","12'6\" x 20'8\"","11'0\" x 15'11\"","22'5\" x 15'11\""], correct:1, explain:"2.5 BHK Combine Unit mein Living & Dining combined ho jaate hain, size 12'6\" x 20'8\" — do 1BHK units jodne se yeh bada space banta hai.", page:"YOO Pristine — C Building Spec Sheet"},
-{tag:"Project Level", q:"YOO Pristine project ka total land area kitna hai?", opts:["4 acres","8 acres","6 acres","10 acres"], correct:2, explain:"Project 6 acres mein spread hai, jisme 4 towers (A,B,C,D) hain.", page:"YOO Pristine — Project-Level Data"},
-{tag:"Project Level", q:"YOO Pristine mein total kitne towers hain, aur unki height kitni hai?", opts:["3 towers, 25 storeys","2 towers, 40 storeys","5 towers, 30 storeys","4 towers (A,B,C,D), 36 storeys each"], correct:3, explain:"4 towers hain — A, B, C, D — har ek 36 storeys ka hai.", page:"YOO Pristine — Project-Level Data"},
-{tag:"Project Level", q:"D Tower kis type ka hai aur iska structure kya hai?", opts:["Commercial — B2+B1+G+1st+2nd Podium","Residential, jaise A/B/C towers","Sirf parking tower","Amenity-only tower"], correct:0, explain:"D Tower commercial hai, structure B2+B1+G+1st+2nd Podium hai — A/B/C towers (jo residential hain, B1+G+3P+35 Floors+36th Recreational) se alag structure.", page:"YOO Pristine — Project-Level Data"},
-{tag:"Project Level", q:"Commercial units (D Tower ke neeche C aur D building mein spread) total kitne hain?", opts:["50 units","73 units","100 units","60 units"], correct:1, explain:"73 commercial units hain, jo C aur D building ke neeche spread hain.", page:"YOO Pristine — Project-Level Data"},
-{tag:"Project Level", q:"Amenity zone ka total size aur amenities count kya hai?", opts:["30,000 sq.ft, 30+ amenities","40,000 sq.ft, 45+ amenities","52,000 sq.ft, 60+ amenities","25,000 sq.ft, 20+ amenities"], correct:2, explain:"52,000 sq.ft ka amenity zone hai, Ground + Podium + Rooftop mein spread, 60+ amenities ke saath.", page:"YOO Pristine — Project-Level Data"},
-{tag:"Project Level", q:"A Building mein refuge floors kaunse hain?", opts:["7,11,15,19,23,27,31,35","5,10,15,20,25,30,35","17,22,27,32","2,7,11,15,19,23,27,31,35"], correct:3, explain:"A Building ke refuge floors 2,7,11,15,19,23,27,31,35 hain — note ki A Building mein extra floor 2 bhi refuge hai, jo B Building mein nahi hai.", page:"YOO Pristine — Project-Level Data"},
-{tag:"Project Level", q:"B Building mein refuge floors kaunse hain — A Building se kaise alag hai?", opts:["7,11,15,19,23,27,31,35 — floor 2 A Building mein hai par B Building mein nahi hai","Bilkul same jaisa A Building","17,22,27,32","Sirf floor 2 aur 35"], correct:0, explain:"B Building ke refuge floors 7,11,15,19,23,27,31,35 hain — A Building se ek kam, kyunki A Building mein extra floor 2 bhi refuge hai jo B mein nahi hai. In dono buildings ke refuge list confuse mat karna.", page:"YOO Pristine — Project-Level Data"},
-{tag:"Project Level", q:"Typical floor plan (non-refuge) kis floor range tak valid hai?", opts:["1st se 30th floor","1st se 35th floor (except refuge floors)","1st se 36th floor","5th se 35th floor"], correct:1, explain:"Typical floor plan 1st se 35th floor tak valid hai, refuge floors ko chhodkar. 36th floor Recreational hai, alag se.", page:"YOO Pristine — Project-Level Data"},
-{tag:"Data Quality", q:"Data-Quality Flags ke hisaab se, kaunse rooms ka confidence level 'High' hai aur kaunse 'Medium'?", opts:["Sab rooms equally high confidence hain","Sab rooms Medium confidence hain","Kitchen/Living/Bedroom majors High confidence hain; kuch A-Building units mein Lobby/Dining Medium confidence hai (graphic clutter ki wajah se print obscure tha)","Sirf Toilet dimensions high confidence hain"], correct:2, explain:"Major rooms (kitchen/living/bedroom) High confidence hain. Kuch A-Building units mein Lobby/Dining print partially obscured tha graphic clutter se, isliye unka confidence Medium hai — client ko exact quote dene se pehle double-check karna chahiye.", page:"YOO Pristine — Data Quality Flags"},
-{tag:"Data Quality", q:"4.5 BHK aur 2.5 BHK Combine Units ke baare mein SEM ko kya precaution leni chahiye?", opts:["Kuch nahi, data final hai","Combine units sell hi nahi karne chahiye","Combine units ka data hamesha galat hota hai","Inka room list merged/combined hai — agar exact BOQ chahiye, toh individual room count developer se double-check karo before quoting"], correct:3, explain:"Combine units (do units jodkar banaye gaye) ka room list merged hota hai — exact Bill of Quantities chahiye toh developer se cross-verify karna zaroori hai, sirf is spec sheet par depend na karo.", page:"YOO Pristine — Data Quality Flags"},
-{tag:"Data Quality", q:"Yeh spec sheet 'marketing deck data' hai, legal RERA carpet declaration nahi — SEM ko is baare mein kya samajhna chahiye?", opts:["Registration/agreement ke time developer ke official area certificate se match karna zaroori hai — final legal number is marketing deck se alag ho sakta hai","Koi farak nahi padta, dono same hote hain","Marketing deck hi legal document hai","RERA certificate ki zaroorat nahi hai"], correct:0, explain:"Marketing-deck data se client ko idea diya ja sakta hai, par final agreement ke time developer ka official RERA area certificate hi legally binding hota hai — SEM ko yeh transparently customer ko batana chahiye.", page:"YOO Pristine — Data Quality Flags"},
-{tag:"Cross-Building Comparison", q:"Ek customer budget-conscious hai aur chhota unit dhoondh raha hai family ke saath. C Building ka 2.5 BHK Combine Unit (1057-1180 sq.ft) aur B Building ka 3 BHK Series 6 (1130 sq.ft) — dono lagbhag same size range mein hain. SEM ko kya samajhna chahiye in dono ko position karte waqt?", opts:["Dono exactly same hain, koi farak nahi batana zaroori","2.5 BHK ek combine unit hai (do 1BHK units jode gaye), jabki 3BHK Series 6 ek original single-unit design hai — layout flow alag hoga, aur combine unit mein room-count double-check zaroori hai developer se","2.5 BHK hamesha 3BHK se sasta hota hai","Sirf carpet area dekhna kaafi hai, layout ka farak matter nahi karta"], correct:1, explain:"Combine units (jaise 2.5 BHK) ka origin alag hota hai — do chhote units jodkar bana hota hai, jiska layout flow aur room-grid original single-unit design (jaise 3BHK Series 6) se different ho sakta hai. SEM ko yeh farak samajh kar hi customer ko sahi expectation set karni chahiye, aur combine unit ka exact BOQ developer se verify karna chahiye.", page:"YOO Pristine — Cross-Building Comparison"}
+{tag:"A Building Rooms", q:"A Building Series 1 mein Foyer ka size kya hai?", opts:["7'2\" x 3'11\"","8'0\" x 9'11\"","7'11\" x 9'5\"","5'3\" x 3'7\""], correct:0, explain:"Series 1 ka Foyer 7'2\" x 3'11\" hai — Series 2 (8'0\"x9'11\") aur Series 3 (7'11\"x9'5\") dono se alag shape ka.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 2 mein Foyer ka size kya hai?", opts:["7'2\" x 3'11\"","8'0\" x 9'11\"","7'11\" x 9'5\"","6'7\" x 11'11\""], correct:1, explain:"Series 2 ka Foyer 8'0\" x 9'11\" hai.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building ke saare units (Series 1, 2, 3) mein Dining ka common size kya hai?", opts:["12'0\" x 19'0\"","12'0\" x 5'11\"","6'7\" x 11'11\"","8'0\" x 3'5\""], correct:2, explain:"Dining saare A Building units mein 6'7\" x 11'11\" hai — consistent across all series.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building ke saare units mein Sitout 1 ka common size kya hai?", opts:["8'0\" x 3'5\"","6'7\" x 11'11\"","11'0\" x 3'6\"","12'0\" x 5'11\""], correct:3, explain:"Sitout 1 saare A Building units mein 12'0\" x 5'11\" hai.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 1 mein Lobby ka size kya hai?", opts:["11'0\" x 3'6\"","9'10\" x 5'9\"","5'8\" x 5'6\"","8'4\" x 4'11\""], correct:0, explain:"Series 1 ka Lobby 11'0\" x 3'6\" hai — Series 2 mein bhi same size ka Lobby hai.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 2 mein Master Bedroom ka size kya hai?", opts:["12'11\" x 11'0\"","12'1\" x 11'0\"","11'0\" x 12'0\"","12'0\" x 15'11\""], correct:1, explain:"Series 2 ka Master Bedroom 12'1\" x 11'0\" hai — Series 3 ke Master Bedroom (12'1\"x11'0\") jaisa hi. Series 1 ka Master (Bedroom 3) alag size ka hai — 12'11\"x11'0\".", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 1 mein Bedroom 1 ka size kya hai?", opts:["12'0\" x 15'11\"","12'1\" x 11'0\"","11'0\" x 12'0\"","12'11\" x 11'0\""], correct:2, explain:"Series 1 ka Bedroom 1, 11'0\" x 12'0\" hai. Bedroom 2 bada hai — 12'0\"x15'11\".", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 1 mein Bedroom 2 ka size kya hai?", opts:["11'0\" x 12'0\"","12'1\" x 11'0\"","10'8\" x 13'11\"","12'0\" x 15'11\""], correct:3, explain:"Series 1 ka Bedroom 2, 12'0\" x 15'11\" hai — Bedroom 1 (11'0\"x12'0\") se bada.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 3 mein Bedroom 2 ka size kya hai?", opts:["11'0\" x 12'0\"","12'0\" x 15'11\"","11'0\" x 12'0\" (Bedroom 4 jaisa)","10'8\" x 13'11\""], correct:0, explain:"Series 3 ka Bedroom 2, 11'0\" x 12'0\" hai — Bedroom 4 (11'0\"x12'0\") jaisa hi size.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 3 mein Bedroom 3 ka size kya hai (sabse bada bedroom Series 3 mein)?", opts:["11'0\" x 12'0\"","12'0\" x 15'11\"","12'1\" x 11'0\"","14'11\" x 12'0\""], correct:1, explain:"Series 3 ka Bedroom 3, 12'0\" x 15'11\" hai — Series 3 ka sabse bada bedroom.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building ke saare units mein Utility Toilet ka common size kya hai?", opts:["4'10\" x 8'0\"","4'11\" x 7'1\"","4'11\" x 8'6\"","8'0\" x 4'11\""], correct:2, explain:"Utility Toilet saare A Building units mein 4'11\" x 8'6\" hai — consistent size.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 1 mein Kitchen & Utility ka size kya hai — Series 3 se kitna alag?", opts:["14'1\" x 10'0\" — Series 3 jaisa hi","12'0\" x 13'11\" — bahut alag","10'0\" x 8'0\"","14'0\" x 10'0\" — Series 3 (14'1\"x10'0\") se thoda chhota"], correct:3, explain:"Series 1 ka Kitchen & Utility 14'0\" x 10'0\" hai — Series 3 (14'1\"x10'0\") se ek inch chhota, minor farak.", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 2 BHK Series 2 mein Bedroom 1 ka size kya hai?", opts:["10'10\" x 10'0\"","11'0\" x 13'11\"","11'0\" x 15'11\"","13'9\" x 10'10\""], correct:0, explain:"2BHK Series 2 ka Bedroom 1, 10'10\" x 10'0\" hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 2 BHK Series 2 mein Bedroom 2 (Master) ka size kya hai?", opts:["10'10\" x 10'0\"","11'0\" x 13'11\"","11'0\" x 12'0\"","12'0\" x 16'5\""], correct:1, explain:"2BHK Series 2 ka Master Bedroom, 11'0\" x 13'11\" hai — Bedroom 1 (10'10\"x10'0\") se bada.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 2 BHK Series 2 mein Master Toilet ka size kya hai?", opts:["8'0\" x 4'11\"","5'7\" x 4'11\"","8'6\" x 4'11\"","4'11\" x 8'0\""], correct:2, explain:"2BHK Series 2 ka Master Toilet, 8'6\" x 4'11\" hai — Common Toilet (8'0\"x4'11\") se thoda bada.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 2 BHK Series 2 mein Kitchen ka size kya hai?", opts:["10'0\" x 8'0\"","12'10\" x 10'0\"","10'2\" x 9'2\"","9'0\" x 8'0\""], correct:3, explain:"2BHK Series 2 ka Kitchen, 9'0\" x 8'0\" hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 3 BHK Series 6 mein Kitchen & Utility ka size kya hai?", opts:["12'10\" x 10'0\"","9'0\" x 8'0\"","14'0\" x 10'0\"","10'0\" x 8'0\""], correct:0, explain:"3BHK Series 6 ka Kitchen & Utility, 12'10\" x 10'0\" hai — B Building ke saare 3BHK/3.5BHK/4.5BHK mein consistent (kitchen ke liye).", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 3 BHK Series 6 mein Bedroom 1 ka size kya hai?", opts:["11'0\" x 12'0\"","11'0\" x 13'11\"","10'10\" x 10'0\"","12'0\" x 16'5\""], correct:1, explain:"3BHK Series 6 ka Bedroom 1, 11'0\" x 13'11\" hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 3 BHK Series 6 mein Sitout 1 ka size kya hai?", opts:["12'0\" x 5'11\"","11'0\" x 3'11\"","12'0\" x 5'5\"","8'6\" x 3'11\""], correct:2, explain:"3BHK Series 6 ka Sitout 1, 12'0\" x 5'5\" hai — A Building ke Sitout1 (12'0\"x5'11\") se thoda alag.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 3.5 BHK mein Foyer ka size kya hai — 3 BHK ke Foyer se alag kyun hai?", opts:["5'11\" x 5'0\" — 3BHK jaisa hi","8'0\" x 9'11\"","7'2\" x 3'11\"","4'11\" x 10'0\" — 3BHK ke Foyer (5'11\"x5'0\") se alag shape ka"], correct:3, explain:"3.5BHK ka Foyer 4'11\"x10'0\" hai. 3BHK mein 'Puja/Store' hoti hai 5'11\"x5'0\" par Foyer alag hoti hai — 3.5BHK mein dono rooms (Puja/Store aur Foyer) separately hain.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building Rooms", q:"B Building 3.5 BHK mein Dining ka size kya hai — 3 BHK Series 6 ke Dining se alag hai?", opts:["7'2\" x 8'9\" — 3BHK ke Dining (6'9\"x8'9\") se thoda bada","6'9\" x 8'9\" — 3BHK jaisa hi","6'10\" x 8'9\"","9'2\" x 11'6\""], correct:0, explain:"3.5BHK ka Dining 7'2\"x8'9\" hai — 3BHK Series 6 ke Dining (6'9\"x8'9\") se thoda bada, Family Area room add hone ki wajah se layout thoda expand hua hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building 4.5BHK", q:"4.5 BHK Combine Unit mein Living Room (combined) ka size kya hai — B Building ka sabse bada Living Room?", opts:["12'0\" x 16'5\"","22'5\" x 15'11\"","11'0\" x 15'11\"","12'0\" x 19'0\""], correct:1, explain:"4.5BHK Combine Unit ka Living Room (combined) 22'5\" x 15'11\" hai — do units jodne se yeh B Building ka sabse bada Living Room ban jaata hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building 4.5BHK", q:"4.5 BHK Combine Unit mein 'Bedroom (large)' size 11'0\"x13'11\" ki kitni quantity hai?", opts:["x2","x3","x4","x1"], correct:2, explain:"4.5BHK Combine Unit mein 4 'Bedroom (large)' rooms hain (11'0\"x13'11\" size ke), aur 2 'Bedroom (standard)' (10'10\"x10'0\").", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building 4.5BHK", q:"4.5 BHK Combine Unit mein 'Study/Lounge' room kaise banta hai?", opts:["Ek naya room specially design kiya gaya hai","Yeh ek bedroom se convert hua hai","Study/Lounge is unit mein hai hi nahi","Ek Kitchen ko convert karke banaya gaya hai, size 11'10\" x 8'0\""], correct:3, explain:"4.5BHK Combine Unit note karta hai: 'Study/Lounge (ex-kitchen converted)' — matlab do units jodne par ek extra kitchen ko Study/Lounge (11'10\"x8'0\") mein convert kar diya gaya hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building 4.5BHK", q:"4.5 BHK Combine Unit mein kitne Sitout hain, aur size kya hai?", opts:["x3, 11'0\" x 3'11\"","x2, 12'0\"x5'5\"","x1, 22'5\"x15'11\"","x4, 8'6\"x3'11\""], correct:0, explain:"4.5BHK Combine Unit mein 3 Sitout hain, har ek 11'0\" x 3'11\" size ka.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"B Building 4.5BHK", q:"4.5 BHK Combine Unit mein kitne 'Toilet (small)' hain, aur size kya hai?", opts:["x1, 5'5\"x3'5\"","x2, 5'5\" x 3'5\"","x3, 4'11\"x8'0\"","x2, 8'0\"x4'11\""], correct:1, explain:"4.5BHK mein 2 'Toilet (small)' hain, size 5'5\" x 3'5\" — yeh baaki bigger toilets (8'0\"x4'11\" aur 6'10\"x8'9\") se alag category hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"C Building Rooms", q:"C Building 1 BHK (Series 5 aur 6, common room grid) mein Bedroom ka size kya hai?", opts:["11'0\" x 11'10\"","10'0\" x 8'0\"","11'0\" x 11'6\"","12'6\" x 10'2\""], correct:2, explain:"1BHK Bedroom (Series 6, aur mirror layout ki wajah se Series 5 mein bhi same) 11'0\" x 11'6\" hai.", page:"YOO Pristine — C Building Spec Sheet"},
+{tag:"C Building Rooms", q:"C Building 1 BHK mein Kitchen ka size kya hai?", opts:["9'0\" x 8'0\"","12'10\" x 10'0\"","10'2\" x 9'2\"","10'0\" x 8'0\""], correct:3, explain:"C Building 1BHK ka Kitchen 10'0\" x 8'0\" hai.", page:"YOO Pristine — C Building Spec Sheet"},
+{tag:"C Building Rooms", q:"C Building 1 BHK mein Sitout ka size kya hai?", opts:["4'11\" x 10'0\"","12'0\" x 5'11\"","11'0\" x 3'11\"","8'0\" x 3'5\""], correct:0, explain:"C Building 1BHK ka Sitout 4'11\" x 10'0\" hai.", page:"YOO Pristine — C Building Spec Sheet"},
+{tag:"C Building Rooms", q:"C Building 1 BHK mein Foyer ka size kya hai?", opts:["8'6\" x 3'1\"","5'3\" x 3'7\"","5'11\" x 5'0\"","7'2\" x 3'11\""], correct:1, explain:"C Building 1BHK ka Foyer 5'3\" x 3'7\" hai.", page:"YOO Pristine — C Building Spec Sheet"},
+{tag:"C Building 2.5BHK", q:"2.5 BHK Combine Unit mein total kitne Toilets hain (do 1BHK jodne se)?", opts:["x2","x3","x4","x1"], correct:2, explain:"2.5BHK Combine Unit mein 4 Toilets hain (4'11\"x8'0\" size ke) — do 1BHK units ke Toilets jud jaate hain.", page:"YOO Pristine — C Building Spec Sheet"},
+{tag:"C Building 2.5BHK", q:"2.5 BHK Combine Unit mein ek Bedroom size 11'0\"x11'10\" bhi hai, jo original 1BHK mein nahi tha (jo 11'0\"x11'6\" tha). Yeh kya darshata hai?", opts:["Yeh printing error hai","2.5BHK mein sirf ek hi bedroom size hota hai","Yeh doosre building ka data hai","Combine karte waqt ek bedroom ka size thoda adjust ho gaya hai wall-sharing ki wajah se — dono bedroom sizes (11'0\"x11'6\" aur 11'0\"x11'10\") present hain 2.5BHK mein"], correct:3, explain:"2.5BHK Combine Unit mein dono size ke bedrooms hain — 11'0\"x11'6\" (x2) aur 11'0\"x11'10\" (x2) — combine hone par wall-sharing se thoda size-adjustment hota hai, jo BOQ verify karte waqt dhyan mein rakhna chahiye.", page:"YOO Pristine — C Building Spec Sheet"},
+{tag:"C Building 2.5BHK", q:"2.5 BHK Combine Unit mein Living & Dining kaise design ki gayi hai?", opts:["Combined ek single space mein — 'Living & Dining (combined)', size 12'6\" x 20'8\"","Alag-alag rooms hain, jaise normal units mein","Living room hi nahi hai is unit mein","Sirf Dining hai, Living Room missing hai"], correct:0, explain:"2.5BHK mein Living aur Dining combine hoke ek space banate hain — 'Living & Dining (combined)' 12'6\"x20'8\" — do 1BHK ke Living Rooms jud kar yeh bada space banta hai.", page:"YOO Pristine — C Building Spec Sheet"},
+{tag:"Project Level", q:"YOO Pristine project mein main road ki width kitni hai?", opts:["15m","18m","20m","12m"], correct:1, explain:"Main road 18m wide hai — project ke roads mein sabse chauda.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Level", q:"YOO Pristine project mein fire driveway (sabhi sides par) ki width kitni hai?", opts:["6.0m","10m","7.5m","5m"], correct:2, explain:"Fire driveway 7.5m wide hai, project ke sabhi sides par — safety compliance ke liye zaroori.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Level", q:"YOO Pristine project mein internal driveway ki width kitni hai?", opts:["7.5m","18m","9m","6.0m"], correct:3, explain:"Internal driveway 6.0m wide hai — main road (18m) aur fire driveway (7.5m) se alag, narrower internal roads.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Amenities", q:"Ground Floor amenities mein 'Miyawaki forest' bhi shamil hai. Yeh kis category ki amenity hai?", opts:["Ek dense, fast-growing urban forest/green-cover feature","Ek swimming pool ka naam","Ek sports court ka naam","Ek children's play area"], correct:0, explain:"Miyawaki forest ek dense, native-species urban forest technique hai jo compact space mein fast green-cover banata hai — Ground Floor amenities mein shamil hai.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Amenities", q:"Ground Floor amenities mein Pet's Park ki special feature kya hai?", opts:["Sirf ek open ground hai","Obstacle course ke saath aata hai","Sirf indoor hai","Sirf small pets ke liye hai"], correct:1, explain:"Pet's Park ek obstacle course ke saath design kiya gaya hai — Ground Floor amenities ka hissa hai.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Amenities", q:"Podium level ka jogging loop kitna lamba hai?", opts:["250m","400m","320m","180m"], correct:2, explain:"Podium par 320m ka jogging loop hai.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Amenities", q:"Podium level ke Azure Pool ka size kya hai?", opts:["5m x 10m","15m x 30m","8m x 20m","10m x 25m"], correct:3, explain:"Azure Pool 10m x 25m ka hai — Podium level ki main swimming pool.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Amenities", q:"Podium level ke Kid's Beach Pool ka size kya hai?", opts:["5m x 10m","10m x 25m","8m x 15m","3m x 6m"], correct:0, explain:"Kid's Beach Pool 5m x 10m ka hai — Azure Pool (10m x 25m) se chhota, bachon ke liye alag design.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Amenities", q:"Recreational Terrace kahan located hai project mein?", opts:["Ground floor par","35th floor ke upar","Podium level par","Basement mein"], correct:1, explain:"Recreational Terrace 35th floor ke upar hai — sky park/stargazing deck, sky bar, banquet lawn jaisi amenities yahan hain.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Project Amenities", q:"Recreational Terrace (35th floor ke upar) mein kaunsi amenities hain?", opts:["Sirf swimming pool","Sirf gym","Sky park/stargazing deck, sky bar, banquet lawn, senior's rooftop lounge, kinetic sculpture, community garden","Sirf parking"], correct:2, explain:"Recreational Terrace mein sky park/stargazing deck, sky bar, banquet lawn, senior's rooftop lounge, kinetic sculpture, aur community garden hain.", page:"YOO Pristine — Project-Level Data"},
+{tag:"Scenario", q:"Ek customer poore YOO Pristine project mein sabse bada unit chahta hai, budget koi issue nahi. Kya recommend karoge?", opts:["A Building 4BHK Series 3, 1562 sq.ft","B Building 3.5BHK, 1352 sq.ft","C Building 2.5BHK, 1180 sq.ft","B Building 4.5BHK Combine Unit, 1631 sq.ft — poore project ka sabse bada"], correct:3, explain:"B Building ka 4.5BHK Combine Unit (1631 sq.ft) poore project mein sabse bada hai — A Building ke 4BHK (max 1562) se bhi bada.", page:"YOO Pristine — Cross-Building Comparison"},
+{tag:"Scenario", q:"Ek customer sabse chhota/affordable unit chahta hai poore project mein. Kya recommend karoge?", opts:["C Building 1BHK Series 6, no-garden variant — 527 sq.ft, sabse chhota","B Building 2BHK Series 4, 814 sq.ft","A Building 3BHK, 1377 sq.ft","C Building 2.5BHK, 1057 sq.ft"], correct:0, explain:"C Building ka 1BHK Series 6 no-garden variant (527 sq.ft) poore project ka sabse chhota unit hai.", page:"YOO Pristine — Cross-Building Comparison"},
+{tag:"Scenario", q:"Ek joint family customer ko 2 kitchens wala unit chahiye taaki dono families apna khana bana sakein. Kaunsa unit suggest karoge?", opts:["A Building 4BHK","B Building 4.5BHK Combine Unit — isme 2 Kitchen hain (x2, do original units se)","B Building 3.5BHK","C Building 2.5BHK"], correct:1, explain:"4.5BHK Combine Unit mein 2 Kitchen hain (9'0\"x8'0\" size ke, x2) — do 2BHK units jodne se dono ke Kitchen preserve hue hain. Yeh joint-family use-case ke liye perfect fit hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"Cross-Check", q:"A Building Series 2 aur Series 3 ke Master Bedroom size same hain kya?", opts:["Nahi, dono alag hain","Series 2 mein Master Bedroom hai hi nahi","Haan — dono 12'1\" x 11'0\" hain","Sirf carpet area same hai, room size alag"], correct:2, explain:"Series 2 aur Series 3 dono ka Master Bedroom 12'1\"x11'0\" hai — same size. Series 1 alag hai (12'11\"x11'0\", jise 'Bedroom 3 (Master)' bola gaya hai).", page:"YOO Pristine — A Building Spec Sheet"},
+{tag:"Cross-Check", q:"C Building ke 1 BHK Series 5 aur Series 6 ke room sizes same hain kya?", opts:["Nahi, dono bilkul alag hain","Sirf Kitchen same hai baaki alag","Yeh data available nahi hai","Haan — Series 5, Series 6 ka mirror layout hai, isliye same room grid/sizes hain, bas carpet area thoda alag hai (592 vs 588)"], correct:3, explain:"Document explicitly kehta hai Series 5, 'mirror layout of Series 6 above — same room grid.' Room sizes same hain, sirf overall carpet area thoda alag hai wall-offset ki wajah se (592 vs 588 sq.ft).", page:"YOO Pristine — C Building Spec Sheet"},
+{tag:"Cross-Check", q:"B Building 3 BHK aur 3.5 BHK mein Bedroom 1, 2, 3 ke sizes same hain ya alag?", opts:["Same hain — 3.5BHK mein sirf extra 'Family Area (0.5 BHK)' room add hoti hai, Foyer aur Dining bhi thode alag hain","Bilkul alag hain dono mein","Sirf Bedroom 1 same hai baaki alag","3.5BHK mein bedroom hi nahi hote"], correct:0, explain:"3BHK aur 3.5BHK ke Bedroom 1 (11'0\"x13'11\"), Bedroom 2/Master (11'0\"x12'0\"), aur Bedroom 3 (11'0\"x12'0\") same hain. Farak sirf extra Family Area room, aur Foyer/Dining ke thode-different sizes mein hai.", page:"YOO Pristine — B Building Spec Sheet"},
+{tag:"A Building Rooms", q:"A Building Series 3 mein Bedroom 4 ka size kya hai?", opts:["12'0\" x 15'11\"","11'0\" x 12'0\"","12'1\" x 11'0\"","14'11\" x 12'0\""], correct:1, explain:"Series 3 ka Bedroom 4, 11'0\" x 12'0\" hai — Bedroom 2 (11'0\"x12'0\") jaisa hi size.", page:"YOO Pristine — A Building Spec Sheet"}
 ];
 
 /* ============================================================
@@ -669,7 +692,7 @@ function renderQuestions(){
     card.className = 'q-card';
     card.innerHTML = `
       <div class="q-meta">
-        <div class="q-num">QUESTION ${qi+1} OF ${QUESTIONS.length} · 3 MARKS</div>
+        <div class="q-num">QUESTION ${qi+1} OF ${QUESTIONS.length} · 2 MARKS</div>
         <div class="q-tag">${item.tag}</div>
       </div>
       <div class="q-text">${item.q}</div>
@@ -771,7 +794,7 @@ function computeResult(){
       page: item.page
     };
   });
-  const marks = correctCount * 3;
+  const marks = correctCount * 2;
   const total = QUESTIONS.length * 2;
   const pct = Math.round((marks/total)*100);
   return {correctCount, wrongCount: QUESTIONS.length - correctCount, marks, total, pct, detail};
